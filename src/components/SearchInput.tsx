@@ -3,7 +3,7 @@ import { Search2Icon } from "@chakra-ui/icons";
 
 const SearchInput = () => {
   return (
-    <InputGroup>
+    <InputGroup ml={3} mr={3}>
       <InputLeftElement children={<Search2Icon />}></InputLeftElement>
       <Input
         focusBorderColor="teal.300"
