@@ -1,11 +1,19 @@
-import { HStack, Text } from "@chakra-ui/react";
+import { Box, HStack, Text, Switch, useColorMode } from "@chakra-ui/react";
 import { GiRadarDish } from "react-icons/gi";
+import SearchInput from "./SearchInput";
 
 const NavBar = () => {
+  const { toggleColorMode, colorMode } = useColorMode();
   return (
-    <HStack>
+    <HStack justifyContent="space-between" p="10px">
       <GiRadarDish size={55} />
-      <Text>NavBar</Text>
+      <SearchInput />
+      <Switch
+        isChecked={colorMode === "dark"}
+        colorScheme="teal"
+        size="md"
+        onChange={toggleColorMode}
+      />
     </HStack>
   );
 };
