@@ -2,8 +2,8 @@ import axios from "axios";
 import Anime from "../entities/Anime";
 
 export interface FetchResponse<T> {
-  data: Anime[];
-  pagination: {};
+  data: T[];
+  pagination?: {};
 }
 
 const axiosInstance = axios.create({

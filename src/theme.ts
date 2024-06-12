@@ -1,4 +1,11 @@
-import { extendTheme, ThemeConfig } from "@chakra-ui/react";
+import {
+  Button,
+  Card,
+  extendTheme,
+  StyleFunctionProps,
+  ThemeConfig,
+  useColorMode,
+} from "@chakra-ui/react";
 import "../node_modules/@fontsource/open-sans";
 
 const config: ThemeConfig = {

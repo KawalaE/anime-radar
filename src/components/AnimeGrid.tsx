@@ -1,15 +1,18 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import useAnimes from "../hooks/useAnimes";
 import AnimeCard from "./AnimeCard";
+import Anime from "../entities/Anime";
 
-const AnimeGrid = () => {
-  const { data: animes, error, isLoading } = useAnimes();
-  console.log(animes);
+interface Props {
+  animes?: Anime[];
+}
+const AnimeGrid = ({ animes }: Props) => {
   return (
     <SimpleGrid
-      padding="10px"
-      columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-      spacing={6}
+      mt={10}
+      padding="20px"
+      columns={{ sm: 2, md: 3, lg: 4, xl: 6 }}
+      spacing={10}
     >
       {animes?.map((anime) => (
         <AnimeCard key={anime.mal_id} animeInfo={anime}></AnimeCard>

@@ -1,7 +1,23 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import AnimeGrid from "./components/AnimeGrid";
+import AnimeGenres from "./components/AnimeGenres";
+import useAnimes from "./hooks/useAnimes";
+import useGenres from "./hooks/useGenres";
+
 function App() {
+  const {
+    data: animes,
+    error: animeError,
+    isLoading: animeIsLoading,
+  } = useAnimes();
+
+  const {
+    data: genres,
+    error: genreError,
+    isLoading: genreIsLoading,
+  } = useGenres();
+
   return (
     <Grid
       templateAreas={{
@@ -13,11 +29,13 @@ function App() {
         <NavBar />
       </GridItem>
       <Show above="lg">
-        <GridItem area="aside">Aside</GridItem>
+        <GridItem area="aside">
+          <AnimeGenres genres={genres} />
+        </GridItem>
       </Show>
 
       <GridItem area="main">
-        <AnimeGrid />
+        <AnimeGrid animes={animes} />
       </GridItem>
     </Grid>
   );
