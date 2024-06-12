@@ -1,7 +1,7 @@
 import { Button, Heading, List, ListItem, VStack } from "@chakra-ui/react";
 import Genre from "../entities/Genre";
 import { animeQuery } from "../hooks/useAnimes";
-import { Dispatch } from "react";
+import { Dispatch, useState } from "react";
 
 interface Props {
   genres?: Genre[];
@@ -16,6 +16,7 @@ const AnimeGenres = ({ genres, queryData, queryUpdater }: Props) => {
       genre.name !== "Hentai" &&
       genre.name !== "Anthropomorphic"
   );
+  const [activeGnere, setActiveGenre] = useState(0);
 
   return (
     <VStack mr={5} mt={10}>
@@ -30,9 +31,10 @@ const AnimeGenres = ({ genres, queryData, queryUpdater }: Props) => {
                 fontSize="lg"
                 variant="link"
                 paddingY="10px"
+                color={genre.mal_id === activeGnere ? "teal.500" : "grey"}
                 onClick={() => {
-                  console.log(genre.mal_id);
                   queryUpdater({ ...queryData, genreId: genre.mal_id });
+                  setActiveGenre(genre.mal_id);
                 }}
               >
                 {genre.name}
