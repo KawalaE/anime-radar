@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import Anime from "../entities/Anime";
 
 export interface FetchResponse<T> {
@@ -17,9 +17,9 @@ class APIClient<T> {
     this.endpoint = endpoint;
   }
 
-  getAll = () => {
+  getAll = (config?: AxiosRequestConfig) => {
     return axiosInstance
-      .get<FetchResponse<T>>(this.endpoint)
+      .get<FetchResponse<T>>(this.endpoint, config)
       .then((res) => res.data.data);
   };
 }

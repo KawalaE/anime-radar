@@ -1,20 +1,15 @@
-import {
-  Button,
-  Heading,
-  List,
-  ListItem,
-  VStack,
-  useColorMode,
-} from "@chakra-ui/react";
+import { Button, Heading, List, ListItem, VStack } from "@chakra-ui/react";
 import Genre from "../entities/Genre";
+import { animeQuery } from "../hooks/useAnimes";
+import { Dispatch } from "react";
 
 interface Props {
   genres?: Genre[];
+  queryData: animeQuery;
+  queryUpdater: Dispatch<React.SetStateAction<animeQuery>>;
 }
 
-const AnimeGenres = ({ genres }: Props) => {
-  const { toggleColorMode, colorMode } = useColorMode();
-
+const AnimeGenres = ({ genres, queryData, queryUpdater }: Props) => {
   const filteredGneres = genres?.filter(
     (genre) =>
       genre.count > 1000 &&
@@ -31,7 +26,15 @@ const AnimeGenres = ({ genres }: Props) => {
         {filteredGneres?.map((genre) => {
           return (
             <ListItem key={genre.mal_id}>
-              <Button fontSize="lg" variant="link" paddingY="10px">
+              <Button
+                fontSize="lg"
+                variant="link"
+                paddingY="10px"
+                onClick={() => {
+                  console.log(genre.mal_id);
+                  queryUpdater({ ...queryData, genreId: genre.mal_id });
+                }}
+              >
                 {genre.name}
               </Button>
             </ListItem>

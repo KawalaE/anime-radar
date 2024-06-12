@@ -6,12 +6,16 @@ import useAnimes from "./hooks/useAnimes";
 import useGenres from "./hooks/useGenres";
 import CardsSkeleton from "./components/CardsSkeleton";
 import GenreSkeleton from "./components/GenreSkeleton";
+import { useState } from "react";
+import { animeQuery } from "./hooks/useAnimes";
+
 function App() {
+  const [animeQuery, setAnimeQuery] = useState({} as animeQuery);
   const {
     data: animes,
     error: animeError,
     isLoading: animeIsLoading,
-  } = useAnimes();
+  } = useAnimes(animeQuery);
 
   const {
     data: genres,
@@ -31,7 +35,11 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area="aside">
-          <AnimeGenres genres={genres} />
+          <AnimeGenres
+            genres={genres}
+            queryData={animeQuery}
+            queryUpdater={setAnimeQuery}
+          />
           {genreIsLoading && <GenreSkeleton />}
         </GridItem>
       </Show>
