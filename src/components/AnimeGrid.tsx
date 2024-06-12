@@ -1,5 +1,4 @@
 import { SimpleGrid } from "@chakra-ui/react";
-import useAnimes from "../hooks/useAnimes";
 import AnimeCard from "./AnimeCard";
 import Anime from "../entities/Anime";
 

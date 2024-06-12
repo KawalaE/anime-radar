@@ -4,7 +4,8 @@ import AnimeGrid from "./components/AnimeGrid";
 import AnimeGenres from "./components/AnimeGenres";
 import useAnimes from "./hooks/useAnimes";
 import useGenres from "./hooks/useGenres";
-import CardSkeleton from "./components/CardSkeleton";
+import CardsSkeleton from "./components/CardsSkeleton";
+import GenreSkeleton from "./components/GenreSkeleton";
 function App() {
   const {
     data: animes,
@@ -31,11 +32,12 @@ function App() {
       <Show above="lg">
         <GridItem area="aside">
           <AnimeGenres genres={genres} />
+          {genreIsLoading && <GenreSkeleton />}
         </GridItem>
       </Show>
 
       <GridItem area="main">
-        {animeIsLoading && <CardSkeleton />}
+        {animeIsLoading && <CardsSkeleton />}
         <AnimeGrid animes={animes} />
       </GridItem>
     </Grid>
