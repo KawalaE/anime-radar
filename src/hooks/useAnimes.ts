@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import APIClient from "../services/api-client";
+import APIClient, { FetchResponse } from "../services/api-client";
 import Anime from "../entities/Anime";
-import { AxiosRequestConfig } from "axios";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 const newAPIClient = new APIClient<Anime>("/anime");
 
@@ -10,14 +10,22 @@ export interface animeQuery {
 }
 
 const useAnimes = (animeQuery: animeQuery) => {
-  return useQuery({
+  return useInfiniteQuery<FetchResponse<Anime>>({
     queryKey: ["animes", animeQuery],
-    queryFn: () =>
+    queryFn: ({ pageParam = 1 }) =>
       newAPIClient.getAll({
         params: {
           genres: animeQuery?.genreId?.toString(),
+          page: pageParam,
+          limit: 24,
+          sfw: true,
         },
       }),
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.pagination.has_next_page
+        ? allPages.length + 1
+        : undefined;
+    },
   });
 };
 

@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Button, Grid, GridItem, Show, Spinner } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import AnimeGrid from "./components/AnimeGrid";
 import AnimeGenres from "./components/AnimeGenres";
@@ -8,13 +8,18 @@ import CardsSkeleton from "./components/CardsSkeleton";
 import GenreSkeleton from "./components/GenreSkeleton";
 import { useState } from "react";
 import { animeQuery } from "./hooks/useAnimes";
+import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function App() {
-  const [animeQuery, setAnimeQuery] = useState({} as animeQuery);
+  const [animeQuery, setAnimeQuery] = useState({});
   const {
     data: animes,
     error: animeError,
     isLoading: animeIsLoading,
+    isFetchingNextPage,
+    fetchNextPage,
+    hasNextPage,
   } = useAnimes(animeQuery);
 
   const {
@@ -23,32 +28,48 @@ function App() {
     isLoading: genreIsLoading,
   } = useGenres();
 
+  const fetchedAnimesCount =
+    animes?.pages.reduce((total, page) => total + page.data.length, 0) || 0;
+  console.log(animes);
+  console.log(fetchedAnimesCount);
   return (
-    <Grid
-      templateAreas={{
-        base: `"nav" "main"`,
-        lg: `"nav nav" "aside main"`,
-      }}
-    >
-      <GridItem area="nav">
-        <NavBar />
-      </GridItem>
-      <Show above="lg">
-        <GridItem area="aside">
-          <AnimeGenres
-            genres={genres}
-            queryData={animeQuery}
-            queryUpdater={setAnimeQuery}
-          />
-          {genreIsLoading && <GenreSkeleton />}
+    <>
+      <Grid
+        templateAreas={{
+          base: `"nav" "main"`,
+          lg: `"nav nav" "aside main"`,
+        }}
+      >
+        <GridItem area="nav">
+          <NavBar />
         </GridItem>
-      </Show>
-
-      <GridItem area="main">
-        {animeIsLoading && <CardsSkeleton />}
-        <AnimeGrid animes={animes} />
-      </GridItem>
-    </Grid>
+        <Show above="lg">
+          <GridItem area="aside">
+            <AnimeGenres
+              genres={genres?.data}
+              queryData={animeQuery}
+              queryUpdater={setAnimeQuery}
+            />
+            {genreIsLoading && <GenreSkeleton />}
+          </GridItem>
+        </Show>
+        <InfiniteScroll
+          next={fetchNextPage}
+          hasMore={!!hasNextPage}
+          loader={<Spinner />}
+          dataLength={fetchedAnimesCount}
+        >
+          <GridItem area="main" mt={10}>
+            {animeIsLoading && <CardsSkeleton />}
+            {animes?.pages.map((page, index) => (
+              <React.Fragment key={index}>
+                <AnimeGrid animes={page.data} />
+              </React.Fragment>
+            ))}
+          </GridItem>
+        </InfiniteScroll>
+      </Grid>
+    </>
   );
 }
 

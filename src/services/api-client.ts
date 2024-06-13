@@ -1,9 +1,17 @@
 import axios, { AxiosRequestConfig } from "axios";
-import Anime from "../entities/Anime";
 
+interface Pages {
+  count: number;
+  per_page: number;
+}
+
+interface Pagination {
+  has_next_page: boolean;
+  items: Pages;
+}
 export interface FetchResponse<T> {
   data: T[];
-  pagination?: {};
+  pagination: Pagination;
 }
 
 const axiosInstance = axios.create({
@@ -20,7 +28,7 @@ class APIClient<T> {
   getAll = (config?: AxiosRequestConfig) => {
     return axiosInstance
       .get<FetchResponse<T>>(this.endpoint, config)
-      .then((res) => res.data.data);
+      .then((res) => res.data);
   };
 }
 export default APIClient;
