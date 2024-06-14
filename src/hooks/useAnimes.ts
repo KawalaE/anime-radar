@@ -7,6 +7,7 @@ const newAPIClient = new APIClient<Anime>("/anime");
 
 export interface animeQuery {
   genreId?: number;
+  phrase?: string;
 }
 
 const useAnimes = (animeQuery: animeQuery) => {
@@ -16,6 +17,7 @@ const useAnimes = (animeQuery: animeQuery) => {
       newAPIClient.getAll({
         params: {
           genres: animeQuery?.genreId?.toString(),
+          q: animeQuery?.phrase,
           page: pageParam,
           limit: 24,
           sfw: true,

@@ -1,17 +1,25 @@
 import { Box, HStack, Text, Switch, useColorMode } from "@chakra-ui/react";
 import { GiRadarDish } from "react-icons/gi";
 import SearchInput from "./SearchInput";
+import { Dispatch } from "react";
+import { animeQuery } from "../hooks/useAnimes";
 
-const NavBar = () => {
+interface Props {
+  queryData: animeQuery;
+  queryUpdater: Dispatch<React.SetStateAction<animeQuery>>;
+}
+
+const NavBar = ({ queryData, queryUpdater }: Props) => {
   const { toggleColorMode, colorMode } = useColorMode();
   return (
     <HStack justifyContent="space-between" p="10px">
       <GiRadarDish size={55} />
-      <SearchInput />
+      <SearchInput queryData={queryData} queryUpdater={queryUpdater} />
       <Switch
         isChecked={colorMode === "dark"}
         colorScheme="teal"
         size="md"
+        ms={5}
         onChange={toggleColorMode}
       />
     </HStack>

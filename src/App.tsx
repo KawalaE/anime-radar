@@ -4,12 +4,12 @@ import AnimeGrid from "./components/AnimeGrid";
 import AnimeGenres from "./components/AnimeGenres";
 import useAnimes from "./hooks/useAnimes";
 import useGenres from "./hooks/useGenres";
-import CardsSkeleton from "./components/CardsSkeleton";
-import GenreSkeleton from "./components/GenreSkeleton";
 import { useState } from "react";
 import { animeQuery } from "./hooks/useAnimes";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import CardsSkeleton from "./components/CardsSkeleton";
+import GenresSekeleton from "./components/GenresSekeleton";
 
 function App() {
   const [animeQuery, setAnimeQuery] = useState({});
@@ -41,7 +41,7 @@ function App() {
         }}
       >
         <GridItem area="nav">
-          <NavBar />
+          <NavBar queryData={animeQuery} queryUpdater={setAnimeQuery} />
         </GridItem>
         <Show above="lg">
           <GridItem area="aside">
@@ -50,7 +50,7 @@ function App() {
               queryData={animeQuery}
               queryUpdater={setAnimeQuery}
             />
-            {genreIsLoading && <GenreSkeleton />}
+            {genreIsLoading && <GenresSekeleton />}
           </GridItem>
         </Show>
         <InfiniteScroll

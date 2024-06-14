@@ -35,7 +35,11 @@ const AnimeGenres = ({ genres, queryData, queryUpdater }: Props) => {
                 paddingY="10px"
                 color={genre.mal_id === activeGnere ? "teal.500" : "grey"}
                 onClick={() => {
-                  queryUpdater({ ...queryData, genreId: genre.mal_id });
+                  queryUpdater({
+                    ...queryData,
+                    genreId: genre.mal_id,
+                    phrase: "",
+                  });
                   setActiveGenre(genre.mal_id);
                 }}
               >

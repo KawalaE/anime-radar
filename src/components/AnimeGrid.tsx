@@ -4,6 +4,7 @@ import AnimeCard from "./AnimeCard";
 import Anime from "../entities/Anime";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { FetchResponse } from "../services/api-client";
+
 interface Props {
   animes?: Anime[];
 }
