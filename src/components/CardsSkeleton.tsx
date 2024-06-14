@@ -18,7 +18,7 @@ const AnimeCardSkeleton = () => {
       {skeletons.map((skeleton) => {
         return (
           <Card key={skeleton} overflow="hidden">
-            <Skeleton objectFit="cover" height="345px" width="245px" />
+            <Skeleton objectFit="cover" height="370px" width="245px" />
             <CardBody>
               <SkeletonText></SkeletonText>
             </CardBody>

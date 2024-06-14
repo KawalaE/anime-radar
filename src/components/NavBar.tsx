@@ -7,14 +7,19 @@ import { animeQuery } from "../hooks/useAnimes";
 interface Props {
   queryData: animeQuery;
   queryUpdater: Dispatch<React.SetStateAction<animeQuery>>;
+  setActiveGenre: (id: number) => void;
 }
 
-const NavBar = ({ queryData, queryUpdater }: Props) => {
+const NavBar = ({ queryData, queryUpdater, setActiveGenre }: Props) => {
   const { toggleColorMode, colorMode } = useColorMode();
   return (
     <HStack justifyContent="space-between" p="10px">
       <GiRadarDish size={55} />
-      <SearchInput queryData={queryData} queryUpdater={queryUpdater} />
+      <SearchInput
+        queryData={queryData}
+        queryUpdater={queryUpdater}
+        setActiveGenre={setActiveGenre}
+      />
       <Switch
         isChecked={colorMode === "dark"}
         colorScheme="teal"

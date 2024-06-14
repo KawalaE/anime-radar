@@ -4,12 +4,20 @@ import { animeQuery } from "../hooks/useAnimes";
 import { Dispatch, useState } from "react";
 
 interface Props {
+  activeGenre: number;
+  setActiveGenre: (id: number) => void;
   genres?: Genre[];
   queryData: animeQuery;
   queryUpdater: Dispatch<React.SetStateAction<animeQuery>>;
 }
 
-const AnimeGenres = ({ genres, queryData, queryUpdater }: Props) => {
+const AnimeGenres = ({
+  activeGenre,
+  setActiveGenre,
+  genres,
+  queryData,
+  queryUpdater,
+}: Props) => {
   const filteredGneres = genres?.filter(
     (genre) =>
       //filter out to long categories or inappropriate categories
@@ -18,8 +26,7 @@ const AnimeGenres = ({ genres, queryData, queryUpdater }: Props) => {
       genre.mal_id !== 49 &&
       genre.mal_id !== 51
   );
-  const [activeGnere, setActiveGenre] = useState(0);
-  console.log(genres);
+
   return (
     <VStack mr={5} mt={10}>
       <Heading fontSize="2xl" mb={3}>
@@ -33,7 +40,7 @@ const AnimeGenres = ({ genres, queryData, queryUpdater }: Props) => {
                 fontSize="lg"
                 variant="link"
                 paddingY="10px"
-                color={genre.mal_id === activeGnere ? "teal.500" : "grey"}
+                color={genre.mal_id === activeGenre ? "teal.500" : "grey"}
                 onClick={() => {
                   queryUpdater({
                     ...queryData,

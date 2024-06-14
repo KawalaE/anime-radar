@@ -8,6 +8,16 @@ const newAPIClient = new APIClient<Anime>("/anime");
 export interface animeQuery {
   genreId?: number;
   phrase?: string;
+  type?:
+    | "tv"
+    | "movie"
+    | "ova"
+    | "special"
+    | "ona"
+    | "music"
+    | "cm"
+    | "pv"
+    | "tv_special";
 }
 
 const useAnimes = (animeQuery: animeQuery) => {

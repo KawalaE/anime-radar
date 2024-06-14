@@ -4,20 +4,22 @@ import { Dispatch, useRef } from "react";
 import { animeQuery } from "../hooks/useAnimes";
 
 interface Props {
+  setActiveGenre: (id: number) => void;
   queryData: animeQuery;
   queryUpdater: Dispatch<React.SetStateAction<animeQuery>>;
 }
 
-const SearchInput = ({ queryData, queryUpdater }: Props) => {
+const SearchInput = ({ queryData, queryUpdater, setActiveGenre }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
   return (
     <form
       style={{ width: "100%" }}
       onSubmit={(event) => {
         event.preventDefault();
-        if (ref.current) {
+        if (ref.current?.value) {
           console.log(ref.current.value);
-          queryUpdater({ ...queryData, phrase: ref.current.value });
+          queryUpdater({ ...queryData, phrase: ref.current.value, genreId: 0 });
+          setActiveGenre(0);
         }
       }}
     >

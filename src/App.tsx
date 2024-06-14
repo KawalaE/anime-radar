@@ -13,6 +13,7 @@ import GenresSekeleton from "./components/GenresSekeleton";
 
 function App() {
   const [animeQuery, setAnimeQuery] = useState({});
+  const [activeGnere, setActiveGenre] = useState(0);
   const {
     data: animes,
     error: animeError,
@@ -41,11 +42,17 @@ function App() {
         }}
       >
         <GridItem area="nav">
-          <NavBar queryData={animeQuery} queryUpdater={setAnimeQuery} />
+          <NavBar
+            queryData={animeQuery}
+            queryUpdater={setAnimeQuery}
+            setActiveGenre={setActiveGenre}
+          />
         </GridItem>
         <Show above="lg">
           <GridItem area="aside">
             <AnimeGenres
+              activeGenre={activeGnere}
+              setActiveGenre={setActiveGenre}
               genres={genres?.data}
               queryData={animeQuery}
               queryUpdater={setAnimeQuery}
