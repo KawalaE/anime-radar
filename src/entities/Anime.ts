@@ -10,6 +10,7 @@ interface Images {
 
 export default interface Anime {
   mal_id: number;
+  title_english: string;
   title: string;
   images: Images;
   score: number;

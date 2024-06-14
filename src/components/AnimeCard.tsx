@@ -15,7 +15,9 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
         src={anime.images.webp.large_image_url}
       ></Image>
       <CardBody>
-        <Heading size="sm">{anime.title}</Heading>
+        <Heading size="sm">
+          {anime.title_english ? anime.title_english : anime.title}
+        </Heading>
         <HStack>
           <Text>{anime.score}</Text>
           <StarIcon

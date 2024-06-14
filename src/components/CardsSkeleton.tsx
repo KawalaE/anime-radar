@@ -13,12 +13,13 @@ const CardsSkeleton = () => {
         return (
           <Card
             key={skeleton}
-            padding={3}
-            m={5}
-            overflow="hidden"
-            width="185px"
+            // padding={3}
+            // m={5}
+            // overflow="hidden"
+            // width="185px"
           >
-            <Skeleton height="300px"></Skeleton>
+            {/* height="300px" */}
+            <Skeleton></Skeleton>
             <SkeletonText noOfLines={3} spacing={4} mt={2} />
           </Card>
         );

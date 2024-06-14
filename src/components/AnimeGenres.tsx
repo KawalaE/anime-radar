@@ -12,12 +12,14 @@ interface Props {
 const AnimeGenres = ({ genres, queryData, queryUpdater }: Props) => {
   const filteredGneres = genres?.filter(
     (genre) =>
+      //filter out to long categories or inappropriate categories
       genre.count > 1000 &&
-      genre.name !== "Hentai" &&
-      genre.name !== "Anthropomorphic"
+      genre.mal_id !== 12 &&
+      genre.mal_id !== 49 &&
+      genre.mal_id !== 51
   );
   const [activeGnere, setActiveGenre] = useState(0);
-
+  console.log(genres);
   return (
     <VStack mr={5} mt={10}>
       <Heading fontSize="2xl" mb={3}>
