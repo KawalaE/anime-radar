@@ -10,10 +10,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import CardsSkeleton from "./components/CardsSkeleton";
 import GenresSekeleton from "./components/GenresSekeleton";
 import useAnimeQueryStore from "./store";
+import OrderSelector from "./components/OrderSelector";
 
 function App() {
   const animeQuery = useAnimeQueryStore((s) => s.animeQuery);
-  const [activeGnere, setActiveGenre] = useState(0);
   const {
     data: animes,
     error: animeError,
@@ -45,11 +45,7 @@ function App() {
         </GridItem>
         <Show above="lg">
           <GridItem area="aside">
-            <AnimeGenres
-              activeGenre={activeGnere}
-              setActiveGenre={setActiveGenre}
-              genres={genres?.data}
-            />
+            <AnimeGenres genres={genres?.data} />
             {genreIsLoading && <GenresSekeleton />}
           </GridItem>
         </Show>
@@ -59,6 +55,8 @@ function App() {
           loader={<Spinner />}
           dataLength={fetchedAnimesCount}
         >
+          {" "}
+          <OrderSelector />
           <GridItem area="main" mt={10}>
             {animeIsLoading && <CardsSkeleton />}
             {animes?.pages.map((page, index) => (

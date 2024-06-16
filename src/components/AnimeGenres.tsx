@@ -3,13 +3,13 @@ import Genre from "../entities/Genre";
 import useAnimeQueryStore from "../store";
 
 interface Props {
-  activeGenre: number;
-  setActiveGenre: (id: number) => void;
   genres?: Genre[];
 }
 
-const AnimeGenres = ({ activeGenre, setActiveGenre, genres }: Props) => {
+const AnimeGenres = ({ genres }: Props) => {
   const setGenreId = useAnimeQueryStore((s) => s.setGenreId);
+  const setSearchText = useAnimeQueryStore((s) => s.setSearchText);
+  const currentGenre = useAnimeQueryStore((s) => s.animeQuery.genreId);
   const filteredGneres = genres?.filter(
     (genre) =>
       //filter out to long categories or unwanted categories
@@ -29,13 +29,17 @@ const AnimeGenres = ({ activeGenre, setActiveGenre, genres }: Props) => {
           return (
             <ListItem key={genre.mal_id}>
               <Button
+                key={genre.mal_id}
                 fontSize="lg"
                 variant="link"
                 paddingY="10px"
-                color={genre.mal_id === activeGenre ? "teal.400" : "grey"}
+                color={genre.mal_id === currentGenre ? "teal.400" : "grey"}
+                _active={{
+                  color: "teal.400",
+                }}
                 onClick={() => {
+                  setSearchText("");
                   setGenreId(genre.mal_id);
-                  setActiveGenre(genre.mal_id);
                 }}
               >
                 {genre.name}

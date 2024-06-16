@@ -16,6 +16,9 @@ const useAnimes = (animeQuery: AnimeQuery) => {
           page: pageParam,
           limit: 24,
           sfw: true,
+          order_by: animeQuery?.orderBy,
+          min_score: 1,
+          sort: animeQuery?.orderBy === "popularity" ? "asc" : "desc",
         },
       }),
     getNextPageParam: (lastPage, allPages) => {

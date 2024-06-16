@@ -1,6 +1,6 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
-import { Dispatch, useRef } from "react";
+import { useRef } from "react";
 import useAnimeQueryStore from "../store";
 
 const SearchInput = () => {
