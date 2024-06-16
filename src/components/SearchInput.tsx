@@ -1,16 +1,12 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 import { Dispatch, useRef } from "react";
-import { animeQuery } from "../hooks/useAnimes";
+import useAnimeQueryStore from "../store";
 
-interface Props {
-  setActiveGenre: (id: number) => void;
-  queryData: animeQuery;
-  queryUpdater: Dispatch<React.SetStateAction<animeQuery>>;
-}
-
-const SearchInput = ({ queryData, queryUpdater, setActiveGenre }: Props) => {
+const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
+  const setSearchedPhrase = useAnimeQueryStore((s) => s.setSearchText);
+  const setGenreId = useAnimeQueryStore((s) => s.setGenreId);
   return (
     <form
       style={{ width: "100%" }}
@@ -18,8 +14,8 @@ const SearchInput = ({ queryData, queryUpdater, setActiveGenre }: Props) => {
         event.preventDefault();
         if (ref.current?.value) {
           console.log(ref.current.value);
-          queryUpdater({ ...queryData, phrase: ref.current.value, genreId: 0 });
-          setActiveGenre(0);
+          setSearchedPhrase(ref.current.value);
+          setGenreId(0);
         }
       }}
     >

@@ -1,26 +1,18 @@
 import { Button, Heading, List, ListItem, VStack } from "@chakra-ui/react";
 import Genre from "../entities/Genre";
-import { animeQuery } from "../hooks/useAnimes";
-import { Dispatch, useState } from "react";
+import useAnimeQueryStore from "../store";
 
 interface Props {
   activeGenre: number;
   setActiveGenre: (id: number) => void;
   genres?: Genre[];
-  queryData: animeQuery;
-  queryUpdater: Dispatch<React.SetStateAction<animeQuery>>;
 }
 
-const AnimeGenres = ({
-  activeGenre,
-  setActiveGenre,
-  genres,
-  queryData,
-  queryUpdater,
-}: Props) => {
+const AnimeGenres = ({ activeGenre, setActiveGenre, genres }: Props) => {
+  const setGenreId = useAnimeQueryStore((s) => s.setGenreId);
   const filteredGneres = genres?.filter(
     (genre) =>
-      //filter out to long categories or inappropriate categories
+      //filter out to long categories or unwanted categories
       genre.count > 1000 &&
       genre.mal_id !== 12 &&
       genre.mal_id !== 49 &&
@@ -40,13 +32,9 @@ const AnimeGenres = ({
                 fontSize="lg"
                 variant="link"
                 paddingY="10px"
-                color={genre.mal_id === activeGenre ? "teal.500" : "grey"}
+                color={genre.mal_id === activeGenre ? "teal.400" : "grey"}
                 onClick={() => {
-                  queryUpdater({
-                    ...queryData,
-                    genreId: genre.mal_id,
-                    phrase: "",
-                  });
+                  setGenreId(genre.mal_id);
                   setActiveGenre(genre.mal_id);
                 }}
               >

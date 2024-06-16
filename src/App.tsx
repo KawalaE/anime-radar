@@ -1,24 +1,23 @@
-import { Button, Grid, GridItem, Show, Spinner } from "@chakra-ui/react";
+import { Grid, GridItem, Show, Spinner } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import AnimeGrid from "./components/AnimeGrid";
 import AnimeGenres from "./components/AnimeGenres";
 import useAnimes from "./hooks/useAnimes";
 import useGenres from "./hooks/useGenres";
 import { useState } from "react";
-import { animeQuery } from "./hooks/useAnimes";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import CardsSkeleton from "./components/CardsSkeleton";
 import GenresSekeleton from "./components/GenresSekeleton";
+import useAnimeQueryStore from "./store";
 
 function App() {
-  const [animeQuery, setAnimeQuery] = useState({});
+  const animeQuery = useAnimeQueryStore((s) => s.animeQuery);
   const [activeGnere, setActiveGenre] = useState(0);
   const {
     data: animes,
     error: animeError,
     isLoading: animeIsLoading,
-    isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
   } = useAnimes(animeQuery);
@@ -42,11 +41,7 @@ function App() {
         }}
       >
         <GridItem area="nav">
-          <NavBar
-            queryData={animeQuery}
-            queryUpdater={setAnimeQuery}
-            setActiveGenre={setActiveGenre}
-          />
+          <NavBar />
         </GridItem>
         <Show above="lg">
           <GridItem area="aside">
@@ -54,8 +49,6 @@ function App() {
               activeGenre={activeGnere}
               setActiveGenre={setActiveGenre}
               genres={genres?.data}
-              queryData={animeQuery}
-              queryUpdater={setAnimeQuery}
             />
             {genreIsLoading && <GenresSekeleton />}
           </GridItem>

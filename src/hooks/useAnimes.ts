@@ -2,25 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import APIClient, { FetchResponse } from "../services/api-client";
 import Anime from "../entities/Anime";
 import { useInfiniteQuery } from "@tanstack/react-query";
-
+import { AnimeQuery } from "../store";
 const newAPIClient = new APIClient<Anime>("/anime");
 
-export interface animeQuery {
-  genreId?: number;
-  phrase?: string;
-  type?:
-    | "tv"
-    | "movie"
-    | "ova"
-    | "special"
-    | "ona"
-    | "music"
-    | "cm"
-    | "pv"
-    | "tv_special";
-}
-
-const useAnimes = (animeQuery: animeQuery) => {
+const useAnimes = (animeQuery: AnimeQuery) => {
   return useInfiniteQuery<FetchResponse<Anime>>({
     queryKey: ["animes", animeQuery],
     queryFn: ({ pageParam = 1 }) =>

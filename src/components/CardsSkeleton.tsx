@@ -1,4 +1,5 @@
 import {
+  AspectRatio,
   Card,
   CardBody,
   Image,
@@ -18,7 +19,7 @@ const AnimeCardSkeleton = () => {
       {skeletons.map((skeleton) => {
         return (
           <Card key={skeleton} overflow="hidden">
-            <Skeleton objectFit="cover" height="370px" width="245px" />
+            <Skeleton objectFit="cover" height="350px" width="295px" />
             <CardBody>
               <SkeletonText></SkeletonText>
             </CardBody>

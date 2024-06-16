@@ -31,7 +31,10 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
         </Heading>
         <HStack>
           <Text>{anime.score}</Text>
-          <StarIcon color={anime.score > 8 ? "yellow" : undefined} mb="1rem" />
+          <StarIcon
+            color={anime.score > 8 ? "yellow.400" : undefined}
+            mb="1rem"
+          />
           <Text> ({convertVotes(anime.scored_by)})</Text>
         </HStack>
       </CardBody>
