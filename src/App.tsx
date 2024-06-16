@@ -10,8 +10,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import CardsSkeleton from "./components/CardsSkeleton";
 import GenresSekeleton from "./components/GenresSekeleton";
 import useAnimeQueryStore from "./store";
-import OrderSelector from "./components/OrderSelector";
-
+import FilterMenu from "./components/FilterMenu";
 function App() {
   const animeQuery = useAnimeQueryStore((s) => s.animeQuery);
   const {
@@ -56,7 +55,7 @@ function App() {
           dataLength={fetchedAnimesCount}
         >
           {" "}
-          <OrderSelector />
+          <FilterMenu />
           <GridItem area="main" mt={10}>
             {animeIsLoading && <CardsSkeleton />}
             {animes?.pages.map((page, index) => (

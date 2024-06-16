@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import Anime from "../entities/Anime";
 import { StarIcon } from "@chakra-ui/icons";
-import convertVotes from "./VotesConversion";
+import { convertVotes } from "./UtilityFunctions";
 
 interface Props {
   animeInfo: Anime;

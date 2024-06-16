@@ -1,14 +1,13 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import useAnimeQueryStore from "../store";
+import { capitalize } from "./UtilityFunctions";
+
 const OrderSelector = () => {
   const setOrderBy = useAnimeQueryStore((s) => s.setOrderBy);
   const selectedOrder = useAnimeQueryStore((s) => s.animeQuery.orderBy);
   const categoriesOfOrder = ["popularity", "score", "favorites", "scored_by"];
 
-  const capitalize = (word: string) => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  };
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
@@ -19,7 +18,9 @@ const OrderSelector = () => {
           <MenuItem
             key={category}
             value={category}
-            onClick={() => setOrderBy(category)}
+            onClick={() => {
+              setOrderBy(category);
+            }}
           >
             {capitalize(category)}
           </MenuItem>
