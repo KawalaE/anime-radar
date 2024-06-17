@@ -12,7 +12,7 @@ const AnimeGrid = ({ animes }: Props) => {
   return (
     <SimpleGrid
       padding="20px"
-      columns={{ sm: 2, md: 3, lg: 4, xl: 6 }}
+      columns={{ sm: 2, md: 3, lg: 3, xl: 4, "2xl": 6 }}
       spacing={10}
     >
       {animes?.map((anime) => (

@@ -15,4 +15,7 @@ export default interface Anime {
   images: Images;
   score: number;
   scored_by: number;
+  synopsis: string;
+  episodes: number;
+  status: string;
 }
