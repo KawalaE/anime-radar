@@ -5,6 +5,7 @@ export interface AnimeQuery {
   phrase?: string;
   orderBy?: string;
   type?: string;
+  status?: string;
 }
 
 interface AnimeQueryStore {
@@ -13,13 +14,21 @@ interface AnimeQueryStore {
   setGenreId: (genreId: number) => void;
   setOrderBy: (orderBy: string) => void;
   setTypeTo: (type: string) => void;
+  setStatusTo: (status: string) => void;
 }
 
 const useAnimeQueryStore = create<AnimeQueryStore>((set) => ({
   animeQuery: {},
   setSearchText: (phrase) =>
     set((store) => ({
-      animeQuery: { ...store.animeQuery, phrase: phrase, genreId: 0 },
+      animeQuery: {
+        ...store.animeQuery,
+        phrase: phrase,
+        genreId: 0,
+        orderBy: "",
+        status: "",
+        type: "",
+      },
     })),
   setGenreId: (genreId) =>
     set((store) => ({
@@ -32,6 +41,10 @@ const useAnimeQueryStore = create<AnimeQueryStore>((set) => ({
   setTypeTo: (type) =>
     set((store) => ({
       animeQuery: { ...store.animeQuery, type: type, phrase: "" },
+    })),
+  setStatusTo: (status) =>
+    set((store) => ({
+      animeQuery: { ...store.animeQuery, status: status, phrase: "" },
     })),
 }));
 

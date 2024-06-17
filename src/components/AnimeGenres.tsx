@@ -38,7 +38,7 @@ const AnimeGenres = ({ genres }: Props) => {
                   color: "teal.400",
                 }}
                 onClick={() => {
-                  setSearchText("");
+                  //setSearchText("");
                   setGenreId(genre.mal_id);
                 }}
               >

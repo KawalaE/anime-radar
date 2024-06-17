@@ -3,6 +3,7 @@ import APIClient, { FetchResponse } from "../services/api-client";
 import Anime from "../entities/Anime";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { AnimeQuery } from "../store";
+
 const newAPIClient = new APIClient<Anime>("/anime");
 
 const useAnimes = (animeQuery: AnimeQuery) => {
@@ -20,6 +21,7 @@ const useAnimes = (animeQuery: AnimeQuery) => {
           min_score: 1,
           sort: animeQuery?.orderBy === "popularity" ? "asc" : "desc",
           type: animeQuery?.type,
+          status: animeQuery?.status,
         },
       }),
     getNextPageParam: (lastPage, allPages) => {

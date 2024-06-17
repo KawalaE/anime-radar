@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show, Spinner } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, Show, Spinner } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import AnimeGrid from "./components/AnimeGrid";
 import AnimeGenres from "./components/AnimeGenres";
@@ -11,6 +11,7 @@ import CardsSkeleton from "./components/CardsSkeleton";
 import GenresSekeleton from "./components/GenresSekeleton";
 import useAnimeQueryStore from "./store";
 import FilterMenu from "./components/FilterMenu";
+import AnimeHeading from "./components/AnimeHeading";
 function App() {
   const animeQuery = useAnimeQueryStore((s) => s.animeQuery);
   const {
@@ -48,23 +49,31 @@ function App() {
             {genreIsLoading && <GenresSekeleton />}
           </GridItem>
         </Show>
-        <InfiniteScroll
-          next={fetchNextPage}
-          hasMore={!!hasNextPage}
-          loader={<Spinner />}
-          dataLength={fetchedAnimesCount}
-        >
-          {" "}
-          <FilterMenu />
-          <GridItem area="main" mt={10}>
+        <GridItem area="main" mt={10}>
+          <Flex
+            alignItems="center"
+            justifyContent="space-between"
+            flexWrap="wrap"
+          >
+            <AnimeHeading />
+            <FilterMenu />
+          </Flex>
+
+          <InfiniteScroll
+            next={fetchNextPage}
+            hasMore={!!hasNextPage}
+            loader={<Spinner />}
+            dataLength={fetchedAnimesCount}
+          >
+            {" "}
             {animeIsLoading && <CardsSkeleton />}
             {animes?.pages.map((page, index) => (
               <React.Fragment key={index}>
                 <AnimeGrid animes={page.data} />
               </React.Fragment>
             ))}
-          </GridItem>
-        </InfiniteScroll>
+          </InfiniteScroll>
+        </GridItem>
       </Grid>
     </>
   );
