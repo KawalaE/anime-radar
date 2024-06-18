@@ -1,8 +1,6 @@
 import {
-  AspectRatio,
   Card,
   CardBody,
-  Image,
   SimpleGrid,
   Skeleton,
   SkeletonText,
@@ -13,13 +11,20 @@ const AnimeCardSkeleton = () => {
   return (
     <SimpleGrid
       padding="20px"
-      columns={{ sm: 2, md: 3, lg: 4, xl: 6 }}
+      columns={{ sm: 2, md: 3, lg: 3, xl: 4, "2xl": 6 }}
       spacing={10}
+      margin={5}
+      justifyContent="center"
     >
       {skeletons.map((skeleton) => {
         return (
-          <Card key={skeleton} overflow="hidden">
-            <Skeleton objectFit="cover" height="350px" width="295px" />
+          <Card
+            w={[325, 270, 240, 250, 220]}
+            h={[590, 510, 460, 480, 435]}
+            key={skeleton}
+            overflow="hidden"
+          >
+            <Skeleton objectFit="cover" height="450px" width="395px" />
             <CardBody>
               <SkeletonText></SkeletonText>
             </CardBody>

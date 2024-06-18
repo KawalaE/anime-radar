@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import APIClient, { FetchResponse } from "../services/api-client";
 import Anime from "../entities/Anime";
 import { useInfiniteQuery } from "@tanstack/react-query";

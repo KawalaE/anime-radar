@@ -16,10 +16,10 @@ const AnimeHeading = () => {
     useAnimeQueryStore((s) => s.animeQuery.status) || ""
   );
   return (
-    <HStack justifyContent="center">
+    <HStack ms={0.5}>
       <Heading
         size="xl"
-        ms={4}
+        ms={10}
         color="teal.400"
       >{`${currentGenreName}`}</Heading>
       <Heading

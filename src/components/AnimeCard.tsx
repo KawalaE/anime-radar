@@ -1,6 +1,5 @@
 import {
   AspectRatio,
-  Box,
   Button,
   Card,
   CardBody,
@@ -8,13 +7,11 @@ import {
   Heading,
   Image,
   Text,
-  Tooltip,
   VStack,
 } from "@chakra-ui/react";
 import Anime from "../entities/Anime";
 import { StarIcon } from "@chakra-ui/icons";
 import { convertVotes } from "./UtilityFunctions";
-import { useState } from "react";
 
 interface Props {
   animeInfo: Anime;
@@ -25,12 +22,12 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
   const shortendTitle =
     mainTitle.length > 30 ? mainTitle.substring(0, 40) + "..." : mainTitle;
   const animeDescription = anime.synopsis
-    ? anime.synopsis.substring(0, 120) + "..."
+    ? anime.synopsis.substring(0, 200) + "..."
     : "Description unavailable :(";
   return (
     <Card
-      w={[325, 270, 250, 260, 220]}
-      h={[590, 500, 470, 490, 430]}
+      w={[325, 260, 240, 250, 220]}
+      h={[590, 510, 460, 480, 435]}
       overflow="hidden"
       role="group"
     >
@@ -54,7 +51,7 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
           <Heading size="sm" color="teal.400" mr={3} mt={3}>
             {shortendTitle}
           </Heading>
-          <HStack>
+          <HStack mb={1}>
             <Text>{anime.score}</Text>
             <StarIcon
               color={anime.score > 8 ? "yellow.400" : undefined}
@@ -89,24 +86,27 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
         <Heading position="relative" size="sm">
           {shortendTitle}
         </Heading>
-        <VStack position="relative" alignItems="flex-start">
+        <VStack position="relative" alignItems="flex-start" gap={1}>
           <HStack>
-            <Text>{anime.score}</Text>
+            <Text m="0">{anime.score}</Text>
             <StarIcon
+              m="0"
               color={anime.score > 8 ? "yellow.400" : undefined}
-              mb="1rem"
+              mb={1.1}
             />
-            <Text> ({convertVotes(anime.scored_by)})</Text>
+            <Text m="0"> ({convertVotes(anime.scored_by)})</Text>
           </HStack>
-          <Text position="relative" color="gray.400" m="0" p="0">
+          <Text fontSize="sm" position="relative" color="gray.400" m="0" p="0">
             Episodes: {anime.episodes}
           </Text>
-          <Text position="relative" color="gray.400" m="0" p="0">
+          <Text fontSize="sm" position="relative" color="gray.400" mb="1" p="0">
             Status: {anime.status}
           </Text>
         </VStack>
 
-        <Text position="relative">{animeDescription}</Text>
+        <Text position="relative" fontSize="sm">
+          {animeDescription}
+        </Text>
         <Button alignSelf="flex-end" colorScheme="teal">
           More info
         </Button>

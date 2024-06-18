@@ -1,7 +1,6 @@
-import { Box, HStack, Text, Switch, useColorMode } from "@chakra-ui/react";
+import { HStack, Switch, useColorMode } from "@chakra-ui/react";
 import { GiRadarSweep } from "react-icons/gi";
 import SearchInput from "./SearchInput";
-import { Dispatch } from "react";
 
 const NavBar = () => {
   const { toggleColorMode, colorMode } = useColorMode();

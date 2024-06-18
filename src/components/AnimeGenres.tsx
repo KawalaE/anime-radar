@@ -20,7 +20,7 @@ const AnimeGenres = ({ genres }: Props) => {
   );
 
   return (
-    <VStack mr={5} mt={10}>
+    <VStack mr={5} mt={12}>
       <Heading fontSize="2xl" mb={3}>
         Genres
       </Heading>
@@ -38,7 +38,6 @@ const AnimeGenres = ({ genres }: Props) => {
                   color: "teal.400",
                 }}
                 onClick={() => {
-                  //setSearchText("");
                   setGenreId(genre.mal_id);
                 }}
               >
