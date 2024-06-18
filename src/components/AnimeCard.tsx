@@ -12,6 +12,7 @@ import {
 import Anime from "../entities/Anime";
 import { StarIcon } from "@chakra-ui/icons";
 import { convertVotes } from "./UtilityFunctions";
+import { Link } from "react-router-dom";
 
 interface Props {
   animeInfo: Anime;
@@ -103,13 +104,12 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
             Status: {anime.status}
           </Text>
         </VStack>
-
         <Text position="relative" fontSize="sm">
           {animeDescription}
         </Text>
-        <Button alignSelf="flex-end" colorScheme="teal">
-          More info
-        </Button>
+        <Link to={"/anime/" + anime.mal_id}>
+          <Button colorScheme="teal">More info</Button>
+        </Link>
       </CardBody>
     </Card>
   );
