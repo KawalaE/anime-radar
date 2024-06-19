@@ -30,9 +30,9 @@ class APIClient<T> {
       .get<FetchResponse<T>>(this.endpoint, config)
       .then((res) => res.data);
   };
-  get = (id: number | string) => {
+  get = (id: number | string, additionalURL = "") => {
     return axiosInstance
-      .get<T>(this.endpoint + "/" + id)
+      .get<T>(this.endpoint + "/" + id + additionalURL)
       .then((res) => res.data);
   };
 }

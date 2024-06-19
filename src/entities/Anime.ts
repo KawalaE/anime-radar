@@ -7,7 +7,13 @@ interface webpImage {
 interface Images {
   webp: webpImage;
 }
-
+interface TrailerContent {
+  images: TrailerImages;
+  embed_url: string;
+}
+interface TrailerImages {
+  large_image_url: string;
+}
 export default interface Anime {
   mal_id: number;
   title_english: string;
@@ -18,4 +24,5 @@ export default interface Anime {
   synopsis: string;
   episodes: number;
   status: string;
+  trailer: TrailerContent;
 }
