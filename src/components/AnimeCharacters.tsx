@@ -24,7 +24,7 @@ const AnimeCharacters = ({ id }: Props) => {
       <Heading size="lg" mb={5}>
         Main characters
       </Heading>
-      <SimpleGrid columns={{ base: 1, md: 4 }} spacing={10}>
+      <SimpleGrid columns={[1, 2, 2, 3, 4]} spacing={10}>
         {mainCharacters?.map((character) => {
           return (
             <GridItem
@@ -34,10 +34,10 @@ const AnimeCharacters = ({ id }: Props) => {
               key={character.character.mal_id}
             >
               <Image
-                boxShadow="outline"
-                p="2"
-                outlineColor="red"
-                rounded="md"
+                border="2px"
+                borderRadius={5}
+                p={2}
+                borderColor="teal.400"
                 src={character.character.images.webp.image_url}
               ></Image>
               <Text mt={3}>{character.character.name}</Text>
