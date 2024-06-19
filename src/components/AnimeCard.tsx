@@ -1,5 +1,6 @@
 import {
   AspectRatio,
+  Box,
   Button,
   Card,
   CardBody,
@@ -13,6 +14,7 @@ import Anime from "../entities/Anime";
 import { StarIcon } from "@chakra-ui/icons";
 import { convertVotes } from "./UtilityFunctions";
 import { Link } from "react-router-dom";
+import AnimeRating from "./AnimeRating";
 
 interface Props {
   animeInfo: Anime;
@@ -21,9 +23,9 @@ interface Props {
 const AnimeCard = ({ animeInfo: anime }: Props) => {
   const mainTitle = anime.title_english ? anime.title_english : anime.title;
   const shortendTitle =
-    mainTitle.length > 30 ? mainTitle.substring(0, 40) + "..." : mainTitle;
+    mainTitle.length > 30 ? mainTitle.substring(0, 35) + "..." : mainTitle;
   const animeDescription = anime.synopsis
-    ? anime.synopsis.substring(0, 200) + "..."
+    ? anime.synopsis.substring(0, 190) + "..."
     : "Description unavailable :(";
   return (
     <Card
@@ -52,14 +54,7 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
           <Heading size="sm" color="teal.400" mr={3} mt={3}>
             {shortendTitle}
           </Heading>
-          <HStack mb={1}>
-            <Text>{anime.score}</Text>
-            <StarIcon
-              color={anime.score > 8 ? "yellow.400" : undefined}
-              mb="1rem"
-            />
-            <Text> ({convertVotes(anime.scored_by)})</Text>
-          </HStack>
+          <AnimeRating score={anime.score} scoredBy={anime.scored_by} />
         </VStack>
       </CardBody>
       {/**Reverse card body */}
@@ -88,15 +83,7 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
           {shortendTitle}
         </Heading>
         <VStack position="relative" alignItems="flex-start" gap={1}>
-          <HStack>
-            <Text m="0">{anime.score}</Text>
-            <StarIcon
-              m="0"
-              color={anime.score > 8 ? "yellow.400" : undefined}
-              mb={1.1}
-            />
-            <Text m="0"> ({convertVotes(anime.scored_by)})</Text>
-          </HStack>
+          <AnimeRating score={anime.score} scoredBy={anime.scored_by} />
           <Text fontSize="sm" position="relative" color="gray.400" m="0" p="0">
             Episodes: {anime.episodes}
           </Text>
@@ -104,6 +91,7 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
             Status: {anime.status}
           </Text>
         </VStack>
+
         <Text position="relative" fontSize="sm">
           {animeDescription}
         </Text>

@@ -4,7 +4,7 @@ interface webpImage {
   small_image_url: string;
 }
 
-interface Images {
+export interface Images {
   webp: webpImage;
 }
 interface TrailerContent {
@@ -14,7 +14,7 @@ interface TrailerContent {
 interface TrailerImages {
   large_image_url: string;
 }
-export default interface Anime {
+export interface Anime {
   mal_id: number;
   title_english: string;
   title: string;

@@ -4,6 +4,8 @@ import useAnime from "../hooks/useAnime";
 import { Grid, GridItem, Heading, SimpleGrid, Spinner } from "@chakra-ui/react";
 import ExpanadableText from "./ExpanadableText";
 import AnimeTrailer from "./AnimeTrailer";
+import AnimeRating from "./AnimeRating";
+import AnimeCharacters from "./AnimeCharacters";
 
 const AnimeDetailPage = () => {
   const { id } = useParams();
@@ -18,11 +20,21 @@ const AnimeDetailPage = () => {
   return (
     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} padding={10}>
       <GridItem>
-        {<Heading>{title}</Heading>}
+        <Heading>{title}</Heading>
+        <AnimeRating
+          score={anime?.data.score}
+          scoredBy={anime?.data.scored_by}
+        />
         <ExpanadableText>{anime?.data.synopsis}</ExpanadableText>
       </GridItem>
       <GridItem>
-        <AnimeTrailer url={anime?.data.trailer.embed_url}></AnimeTrailer>
+        <AnimeTrailer
+          image={anime?.data.trailer.images.large_image_url}
+          url={anime?.data.trailer.embed_url}
+        ></AnimeTrailer>
+      </GridItem>
+      <GridItem>
+        <AnimeCharacters id={anime?.data.mal_id} />
       </GridItem>
     </SimpleGrid>
   );
