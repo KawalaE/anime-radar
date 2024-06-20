@@ -18,7 +18,6 @@ const AnimeCharacters = ({ id }: Props) => {
   const mainCharacters = data?.data.filter(
     (character) => character.role === "Main"
   );
-  console.log(mainCharacters);
   return mainCharacters ? (
     <>
       <Heading size="lg" mb={5}>
@@ -40,7 +39,9 @@ const AnimeCharacters = ({ id }: Props) => {
                 borderColor="teal.400"
                 src={character.character.images.webp.image_url}
               ></Image>
-              <Text mt={3}>{character.character.name}</Text>
+              <Text mt={3} textAlign="center">
+                {character.character.name}
+              </Text>
             </GridItem>
           );
         })}

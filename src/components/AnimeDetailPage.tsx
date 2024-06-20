@@ -6,6 +6,7 @@ import ExpanadableText from "./ExpanadableText";
 import AnimeTrailer from "./AnimeTrailer";
 import AnimeRating from "./AnimeRating";
 import AnimeCharacters from "./AnimeCharacters";
+import AnimeDetailInfo from "./AnimeDetailInfo";
 
 const AnimeDetailPage = () => {
   const { id } = useParams();
@@ -28,13 +29,18 @@ const AnimeDetailPage = () => {
         <ExpanadableText>{anime?.data.synopsis}</ExpanadableText>
       </GridItem>
       <GridItem>
-        <AnimeTrailer
-          image={anime?.data.trailer.images.large_image_url}
-          url={anime?.data.trailer.embed_url}
-        ></AnimeTrailer>
+        <AnimeTrailer url={anime?.data.trailer.embed_url}></AnimeTrailer>
       </GridItem>
       <GridItem>
         <AnimeCharacters id={anime?.data.mal_id} />
+      </GridItem>
+      <GridItem>
+        <AnimeDetailInfo
+          episodes={anime.data.episodes}
+          type={anime.data.type}
+          rating={anime.data.rating}
+          year={anime.data.year}
+        />
       </GridItem>
     </SimpleGrid>
   );

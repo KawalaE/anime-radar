@@ -13,8 +13,9 @@ const ExpanadableText = ({ children: text }: Props) => {
     <Text>
       {displayText + "..."}{" "}
       <Button
-        size="xs"
+        size="sm"
         colorScheme="teal"
+        variant="ghost"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         {isExpanded ? "Show less" : "Show more"}

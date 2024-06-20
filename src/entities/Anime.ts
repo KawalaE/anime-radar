@@ -25,4 +25,7 @@ export interface Anime {
   episodes: number;
   status: string;
   trailer: TrailerContent;
+  type: string;
+  rating: string;
+  year: number;
 }

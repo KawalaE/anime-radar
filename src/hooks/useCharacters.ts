@@ -1,6 +1,7 @@
 import APIClient, { FetchResponse } from "../services/api-client";
 import { useQuery } from "@tanstack/react-query";
 import Character from "../entities/Character";
+import CharacterData from "../entities/Character";
 
 interface Response {
   data: CharacterData[];
@@ -8,7 +9,7 @@ interface Response {
 const newAPIClient = new APIClient<Response>("/anime");
 
 const useCharacters = (id: number | string, additionalURL: string) => {
-  return useQuery({
+  return useQuery<Response>({
     queryKey: ["characters", id],
     queryFn: () => newAPIClient.get(id, additionalURL),
   });
