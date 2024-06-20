@@ -7,7 +7,7 @@ import AnimeTrailer from "./AnimeTrailer";
 import AnimeRating from "./AnimeRating";
 import AnimeCharacters from "./AnimeCharacters";
 import AnimeDetailInfo from "./AnimeDetailInfo";
-
+import AnimeRecommendations from "./AnimeRecommendations";
 const AnimeDetailPage = () => {
   const { id } = useParams();
   const { data: anime, isLoading, error } = useAnime(id!);
@@ -41,6 +41,9 @@ const AnimeDetailPage = () => {
           rating={anime.data.rating}
           year={anime.data.year}
         />
+      </GridItem>
+      <GridItem colSpan={2}>
+        <AnimeRecommendations />
       </GridItem>
     </SimpleGrid>
   );

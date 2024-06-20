@@ -1,20 +1,16 @@
 import {
   AspectRatio,
-  Box,
   Button,
   Card,
   CardBody,
-  HStack,
   Heading,
   Image,
   Text,
   VStack,
 } from "@chakra-ui/react";
-import Anime from "../entities/Anime";
-import { StarIcon } from "@chakra-ui/icons";
-import { convertVotes } from "./UtilityFunctions";
 import { Link } from "react-router-dom";
 import AnimeRating from "./AnimeRating";
+import { Anime } from "../entities/Anime";
 
 interface Props {
   animeInfo: Anime;
