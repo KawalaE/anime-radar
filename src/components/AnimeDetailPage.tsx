@@ -42,8 +42,8 @@ const AnimeDetailPage = () => {
           year={anime.data.year}
         />
       </GridItem>
-      <GridItem colSpan={2}>
-        <AnimeRecommendations />
+      <GridItem colSpan={[1, 1, 2, 2]}>
+        <AnimeRecommendations id={anime.data.mal_id} />
       </GridItem>
     </SimpleGrid>
   );

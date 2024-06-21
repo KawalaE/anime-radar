@@ -6,11 +6,12 @@ import {
   Heading,
   Image,
   Text,
+  Tooltip,
   VStack,
 } from "@chakra-ui/react";
+import { Anime } from "../entities/Anime";
 import { Link } from "react-router-dom";
 import AnimeRating from "./AnimeRating";
-import { Anime } from "../entities/Anime";
 
 interface Props {
   animeInfo: Anime;
@@ -50,6 +51,7 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
           <Heading size="sm" color="teal.400" mr={3} mt={3}>
             {shortendTitle}
           </Heading>
+
           <AnimeRating score={anime.score} scoredBy={anime.scored_by} />
         </VStack>
       </CardBody>
@@ -75,9 +77,12 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
           justifyContent: "space-around",
         }}
       >
-        <Heading position="relative" size="sm">
-          {shortendTitle}
-        </Heading>
+        <Tooltip label={mainTitle}>
+          <Heading position="relative" size="sm">
+            {shortendTitle}
+          </Heading>
+        </Tooltip>
+
         <VStack position="relative" alignItems="flex-start" gap={1}>
           <AnimeRating score={anime.score} scoredBy={anime.scored_by} />
           <Text fontSize="sm" position="relative" color="gray.400" m="0" p="0">

@@ -1,6 +1,6 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import AnimeCard from "./AnimeCard";
-import Anime from "../entities/Anime";
+import { Anime } from "../entities/Anime";
 
 interface Props {
   animes?: Anime[];

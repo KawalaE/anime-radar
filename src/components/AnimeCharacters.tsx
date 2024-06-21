@@ -1,6 +1,4 @@
-import React from "react";
 import useCharacters from "../hooks/useCharacters";
-import Character from "../entities/Character";
 import { GridItem, Heading, SimpleGrid } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
