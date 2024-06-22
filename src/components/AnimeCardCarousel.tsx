@@ -11,7 +11,7 @@ const AnimeCardCarousel = ({ data }: Props) => {
     data.title.length > 25 ? data.title.substring(0, 20) + "..." : data.title;
   return (
     <>
-      <Link to={`/anime/${data.mal_id}`}>
+      <Link to={`/anime/${data.mal_id}`} style={{ display: "inline-block" }}>
         <Card
           _hover={{
             border: "2px",
