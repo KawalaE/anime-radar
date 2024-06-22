@@ -21,7 +21,7 @@ const AnimeCharacters = ({ id }: Props) => {
       <Heading size="lg" mb={5}>
         Main characters
       </Heading>
-      <SimpleGrid columns={[1, 2, 2, 3, 4]} spacing={10}>
+      <SimpleGrid columns={[1, 2, 3, 4, 5]} spacing={10}>
         {mainCharacters?.map((character) => {
           return (
             <GridItem

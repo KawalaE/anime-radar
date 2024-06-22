@@ -5,8 +5,8 @@ interface Props {
 }
 const ExpanadableText = ({ children: text }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  let limit = 400;
-  if (text.length < 400) return <Text>{text}</Text>;
+  let limit = 600;
+  if (text.length < 600) return <Text>{text}</Text>;
   let displayText = isExpanded ? text : text.substring(0, limit);
 
   return (

@@ -2,7 +2,7 @@ import useRecommendations from "../hooks/useRecommendations";
 import { Heading } from "@chakra-ui/react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import AnimeCardCarousel from "../assets/AnimeCardCarousel";
+import AnimeCardCarousel from "./AnimeCardCarousel";
 
 interface Props {
   id: number;
@@ -16,7 +16,8 @@ const AnimeRecommendations = ({ id }: Props) => {
   const bestRecommendations =
     data?.data.length > 10 ? data?.data.slice(0, 10) : data?.data;
   console.log(bestRecommendations ? bestRecommendations[0] : null);
-  return (
+
+  return data?.data.length ? (
     <>
       <Heading mb={5} size="lg">
         More like this
@@ -81,7 +82,7 @@ const AnimeRecommendations = ({ id }: Props) => {
         })}
       </Carousel>
     </>
-  );
+  ) : null;
 };
 
 export default AnimeRecommendations;

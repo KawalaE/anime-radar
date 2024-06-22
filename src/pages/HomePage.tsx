@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show, Flex, Spinner } from "@chakra-ui/react";
+import { Grid, GridItem, Show, Flex, Spinner, Heading } from "@chakra-ui/react";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import AnimeGenres from "../components/AnimeGenres";
@@ -10,7 +10,7 @@ import GenresSekeleton from "../components/GenresSekeleton";
 import useAnimes from "../hooks/useAnimes";
 import useGenres from "../hooks/useGenres";
 import useAnimeQueryStore from "../store";
-
+import { Text } from "@chakra-ui/react";
 const HomePage = () => {
   const animeQuery = useAnimeQueryStore((s) => s.animeQuery);
   const {
@@ -29,6 +29,7 @@ const HomePage = () => {
 
   const fetchedAnimesCount =
     animes?.pages.reduce((total, page) => total + page.data.length, 0) || 0;
+
   return (
     <>
       <Grid
