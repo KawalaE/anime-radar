@@ -9,7 +9,7 @@ interface Props {
 }
 const AnimeRating = ({ score, scoredBy }: Props) => {
   return (
-    <HStack mb={1}>
+    <HStack>
       <Text>{score}</Text>
       <StarIcon color={score > 8 ? "yellow.400" : undefined} mb="1rem" />
       <Text> ({convertVotes(scoredBy)})</Text>

@@ -38,10 +38,19 @@ const AnimeDetailPage = () => {
       <Flex direction={{ base: "column", xl: "row" }} gap={5}>
         <Box flex="1">
           <Heading>{title}</Heading>
-          <AnimeRating
-            score={anime?.data.score}
-            scoredBy={anime?.data.scored_by}
-          />
+          <Flex alignItems="center" rowGap={1} columnGap={5} flexWrap="wrap">
+            <AnimeRating
+              score={anime?.data.score}
+              scoredBy={anime?.data.scored_by}
+            />
+            <AnimeDetailInfo
+              episodes={anime.data.episodes}
+              type={anime.data.type}
+              rating={anime.data.rating}
+              year={anime.data.year}
+            />
+          </Flex>
+
           <ExpanadableText>{anime?.data.synopsis}</ExpanadableText>
         </Box>
 
@@ -51,12 +60,7 @@ const AnimeDetailPage = () => {
           </Box>
         ) : null}
       </Flex>
-      <AnimeDetailInfo
-        episodes={anime.data.episodes}
-        type={anime.data.type}
-        rating={anime.data.rating}
-        year={anime.data.year}
-      />
+
       <AnimeCharacters id={anime?.data.mal_id} />
       <AnimeRecommendations id={anime.data.mal_id} />
     </Flex>

@@ -1,6 +1,8 @@
 import React from "react";
 import {
+  Badge,
   Box,
+  Button,
   Flex,
   GridItem,
   Heading,
@@ -18,56 +20,26 @@ interface Props {
 const AnimeDetailInfo = ({ episodes, type, rating, year }: Props) => {
   return (
     <>
-      <Flex justifyContent="space-around" flexWrap="wrap" mt={7} mb={3}>
+      <Flex flexWrap="wrap" gap={5} mb={3}>
         {episodes ? (
-          <Box>
-            <VStack>
-              <Heading size="md">Episodes</Heading>
-              <Heading size="md" color="teal.400">
-                {episodes}
-              </Heading>
-            </VStack>
-          </Box>
+          <Badge p={1} colorScheme="teal">
+            Episodes: {episodes}
+          </Badge>
         ) : null}
         {type ? (
-          <Box>
-            <VStack>
-              <Heading size="md">Type</Heading>
-              <Heading size="md" color="teal.400">
-                {type}
-              </Heading>
-            </VStack>
-          </Box>
+          <Badge p={1} colorScheme="teal">
+            {type}
+          </Badge>
         ) : null}
         {rating ? (
-          <Box>
-            <VStack>
-              <Heading size="md">Rating</Heading>
-              <Heading
-                width="100px"
-                textAlign="center"
-                size="sm"
-                color="teal.400"
-              >
-                {rating}
-              </Heading>
-            </VStack>
-          </Box>
+          <Badge p={1} colorScheme="teal">
+            {rating}
+          </Badge>
         ) : null}
         {year ? (
-          <Box>
-            <VStack>
-              <Heading size="md">Year</Heading>
-              <Heading
-                width="100px"
-                textAlign="center"
-                size="md"
-                color="teal.400"
-              >
-                {year}
-              </Heading>
-            </VStack>
-          </Box>
+          <Badge p={1} colorScheme="teal">
+            {year}
+          </Badge>
         ) : null}
       </Flex>
     </>
