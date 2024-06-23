@@ -20,7 +20,7 @@ const AnimeCardCarousel = ({ data }: Props) => {
             cursor: "pointer",
           }}
           w={[210, 200, 230]}
-          h={[400, 400, 400]}
+          h={[370, 360, 400]}
           overflow="hidden"
         >
           <AspectRatio ratio={2 / 3}>

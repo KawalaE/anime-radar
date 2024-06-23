@@ -1,8 +1,12 @@
 import useRecommendations from "../hooks/useRecommendations";
 import { Box, Heading } from "@chakra-ui/react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import { Swiper, SwiperSlide } from "swiper/react";
 import AnimeCardCarousel from "./AnimeCardCarousel";
+import { Navigation } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "../index.css";
 
 interface Props {
   id: number;
@@ -23,65 +27,48 @@ const AnimeRecommendations = ({ id }: Props) => {
         More like this
       </Heading>
       <Box>
-        <Carousel
-          additionalTransfrom={0}
-          arrows
-          autoPlaySpeed={3000}
-          centerMode={false}
-          className=""
-          containerClass="container"
-          dotListClass=""
-          draggable
-          focusOnSelect={false}
-          infinite={false}
-          itemClass=""
-          keyBoardControl
-          minimumTouchDrag={80}
-          pauseOnHover
-          renderArrowsWhenDisabled={false}
-          renderButtonGroupOutside={true}
-          renderDotsOutside={false}
-          responsive={{
-            superLargeDesktop: {
-              // the naming can be any, depends on you.
-              breakpoint: { max: 4000, min: 1500 },
-              items: 4,
+        <Swiper
+          style={{ padding: "30px" }}
+          spaceBetween={40}
+          navigation={true}
+          modules={[Navigation]}
+          className="mySwiper"
+          breakpoints={{
+            1800: {
+              // width: 576,
+              slidesPerView: 5,
             },
-            desktop: {
-              breakpoint: { max: 1500, min: 1100 },
-              items: 3,
+            1600: {
+              // width: 576,
+              slidesPerView: 4,
             },
-            tablet: {
-              breakpoint: { max: 1100, min: 1000 },
-              items: 3,
+            1100: {
+              // width: 576,
+              slidesPerView: 3,
             },
-            mobile: {
-              breakpoint: { max: 1000, min: 650 },
-              items: 2,
+            700: {
+              // width: 768,
+              slidesPerView: 2,
             },
-            mobileSmall: {
-              breakpoint: { max: 650, min: 0 },
-              items: 1,
+            0: {
+              // width: 768,
+              slidesPerView: 1,
             },
           }}
-          rewind={false}
-          rewindWithAnimation={false}
-          rtl={false}
-          shouldResetAutoplay
-          showDots={false}
-          sliderClass=""
-          slidesToSlide={1}
-          swipeable
         >
           {bestRecommendations?.map((rec) => {
             return (
-              <AnimeCardCarousel
-                key={rec.entry.mal_id}
-                data={rec.entry}
-              ></AnimeCardCarousel>
+              <SwiperSlide
+                style={{ display: "flex", justifyContent: "center" }}
+              >
+                <AnimeCardCarousel
+                  key={rec.entry.mal_id}
+                  data={rec.entry}
+                ></AnimeCardCarousel>
+              </SwiperSlide>
             );
           })}
-        </Carousel>
+        </Swiper>
       </Box>
     </>
   ) : null;
