@@ -2,6 +2,7 @@ import { Entry } from "../hooks/useRecommendations";
 import { AspectRatio, Card, Heading, Tooltip } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+
 interface Props {
   data: Entry;
 }

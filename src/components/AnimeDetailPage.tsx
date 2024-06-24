@@ -1,13 +1,6 @@
 import { useParams } from "react-router-dom";
 import useAnime from "../hooks/useAnime";
-import {
-  Flex,
-  Grid,
-  GridItem,
-  Heading,
-  SimpleGrid,
-  Spinner,
-} from "@chakra-ui/react";
+import { Flex, Heading, Spinner } from "@chakra-ui/react";
 import ExpanadableText from "./ExpanadableText";
 import AnimeTrailer from "./AnimeTrailer";
 import AnimeRating from "./AnimeRating";
@@ -15,7 +8,8 @@ import AnimeCharacters from "./AnimeCharacters";
 import AnimeDetailInfo from "./AnimeDetailInfo";
 import AnimeRecommendations from "./AnimeRecommendations";
 import { Box } from "@chakra-ui/react";
-import { Text } from "@chakra-ui/react";
+import AnimeGenresButtons from "./AnimeGenresButtons";
+
 const AnimeDetailPage = () => {
   const { id } = useParams();
   const { data: anime, isLoading, error } = useAnime(id!);
@@ -52,6 +46,7 @@ const AnimeDetailPage = () => {
           </Flex>
 
           <ExpanadableText>{anime?.data.synopsis}</ExpanadableText>
+          <AnimeGenresButtons genres={anime.data.genres}></AnimeGenresButtons>
         </Box>
 
         {anime?.data.trailer.embed_url ? (

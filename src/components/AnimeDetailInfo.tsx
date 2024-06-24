@@ -1,15 +1,4 @@
-import React from "react";
-import {
-  Badge,
-  Box,
-  Button,
-  Flex,
-  GridItem,
-  Heading,
-  SimpleGrid,
-  VStack,
-} from "@chakra-ui/react";
-import { Text } from "@chakra-ui/react";
+import { Badge, Flex } from "@chakra-ui/react";
 interface Props {
   episodes: number;
   type: string;

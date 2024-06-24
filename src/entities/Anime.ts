@@ -1,3 +1,4 @@
+import Genre from "./Genre";
 interface webpImage {
   image_url: string;
   large_image_url: string;
@@ -14,6 +15,7 @@ interface TrailerContent {
 interface TrailerImages {
   large_image_url: string;
 }
+
 export interface Anime {
   mal_id: number;
   title_english: string;
@@ -28,4 +30,5 @@ export interface Anime {
   type: string;
   rating: string;
   year: number;
+  genres: Genre[];
 }

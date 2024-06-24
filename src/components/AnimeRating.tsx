@@ -1,5 +1,5 @@
 import { StarIcon } from "@chakra-ui/icons";
-import { VStack, Heading, HStack } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import { convertVotes } from "./UtilityFunctions";
 import { Text } from "@chakra-ui/react";
 

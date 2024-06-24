@@ -59,12 +59,10 @@ const AnimeRecommendations = ({ id }: Props) => {
           {bestRecommendations?.map((rec) => {
             return (
               <SwiperSlide
+                key={rec.entry.mal_id}
                 style={{ display: "flex", justifyContent: "center" }}
               >
-                <AnimeCardCarousel
-                  key={rec.entry.mal_id}
-                  data={rec.entry}
-                ></AnimeCardCarousel>
+                <AnimeCardCarousel data={rec.entry}></AnimeCardCarousel>
               </SwiperSlide>
             );
           })}
