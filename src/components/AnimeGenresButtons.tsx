@@ -7,6 +7,10 @@ interface Props {
 }
 const AnimeGenresButtons = ({ genres }: Props) => {
   const changeGenre = useAnimeQueryStore((s) => s.setGenreId);
+  const setPharse = useAnimeQueryStore((s) => s.setSearchText);
+  const setType = useAnimeQueryStore((s) => s.setTypeTo);
+  const setOrder = useAnimeQueryStore((s) => s.setOrderBy);
+  const setStatus = useAnimeQueryStore((s) => s.setStatusTo);
   console.log(genres);
   const navigate = useNavigate();
   return (
@@ -15,6 +19,10 @@ const AnimeGenresButtons = ({ genres }: Props) => {
         return (
           <Button
             onClick={() => {
+              setPharse("");
+              setType("");
+              setOrder("");
+              setStatus("");
               changeGenre(genre.mal_id);
               navigate("/");
             }}
