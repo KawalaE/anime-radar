@@ -2,6 +2,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import useAnimeQueryStore from "../store";
 import { refactor } from "./UtilityFunctions";
+import { CheckIcon } from "@chakra-ui/icons";
 
 const OrderSelector = () => {
   const setOrderBy = useAnimeQueryStore((s) => s.setOrderBy);
@@ -11,13 +12,21 @@ const OrderSelector = () => {
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-        {selectedOrder ? `Order by: ${refactor(selectedOrder)}` : "Order by"}
+        {"Order by"}
       </MenuButton>
       <MenuList>
         {categoriesOfOrder.map((category) => (
           <MenuItem
             key={category}
             value={category}
+            flexDir="row-reverse"
+            icon={
+              selectedOrder === category ? (
+                <CheckIcon color="teal.400" />
+              ) : (
+                <></>
+              )
+            }
             onClick={() => {
               setOrderBy(category);
             }}
