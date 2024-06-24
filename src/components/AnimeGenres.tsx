@@ -2,6 +2,7 @@ import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import Genre from "../entities/Genre";
 import useAnimeQueryStore from "../store";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { CheckIcon } from "@chakra-ui/icons";
 
 interface Props {
   genres?: Genre[];
@@ -9,7 +10,6 @@ interface Props {
 
 const AnimeGenres = ({ genres }: Props) => {
   const setGenreId = useAnimeQueryStore((s) => s.setGenreId);
-  const setSearchText = useAnimeQueryStore((s) => s.setSearchText);
   const currentGenre = useAnimeQueryStore((s) => s.animeQuery.genreId);
   console.log(genres);
   const filteredGneres = genres?.filter(
@@ -30,10 +30,18 @@ const AnimeGenres = ({ genres }: Props) => {
         {filteredGneres?.map((genre) => {
           return (
             <MenuItem
+              flexDir="row-reverse"
               onClick={() => {
                 setGenreId(genre.mal_id);
               }}
               key={genre.mal_id}
+              icon={
+                currentGenre === genre.mal_id ? (
+                  <CheckIcon color="teal.400" />
+                ) : (
+                  <></>
+                )
+              }
             >
               {genre.name}
             </MenuItem>
