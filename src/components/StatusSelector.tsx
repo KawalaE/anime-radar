@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "@chakra-ui/icons";
+import { CheckIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import useAnimeQueryStore from "../store";
 import { refactor } from "./UtilityFunctions";
@@ -11,11 +11,15 @@ const StatusSelector = () => {
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-        {selectedStatus ? `Status: ${refactor(selectedStatus)}` : "Status"}
+        {"Status"}
       </MenuButton>
       <MenuList>
         {statusSelection.map((status) => (
           <MenuItem
+            flexDir="row-reverse"
+            icon={
+              selectedStatus === status ? <CheckIcon color="teal.400" /> : <></>
+            }
             key={status}
             value={status}
             onClick={() => setStatusTo(status)}

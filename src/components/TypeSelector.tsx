@@ -2,6 +2,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import useAnimeQueryStore from "../store";
 import { refactor } from "./UtilityFunctions";
+import { CheckIcon } from "@chakra-ui/icons";
 
 const TypeSelector = () => {
   const setTypeTo = useAnimeQueryStore((s) => s.setTypeTo);
@@ -21,11 +22,19 @@ const TypeSelector = () => {
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-        {selectedType ? `Type: ${refactor(selectedType)}` : "Type"}
+        {"Type"}
       </MenuButton>
       <MenuList>
         {categoriesOfOrder.map((type) => (
-          <MenuItem key={type} value={type} onClick={() => setTypeTo(type)}>
+          <MenuItem
+            flexDir="row-reverse"
+            icon={
+              selectedType === type ? <CheckIcon color="teal.400" /> : <></>
+            }
+            key={type}
+            value={type}
+            onClick={() => setTypeTo(type)}
+          >
             {refactor(type)}
           </MenuItem>
         ))}
