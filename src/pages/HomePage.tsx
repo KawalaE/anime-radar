@@ -23,7 +23,10 @@ const HomePage = () => {
 
   return (
     <>
-      <Grid>
+      <Grid
+        pr={["5px", "50px", "70px", "140px", "200px"]}
+        pl={["5px", "50px", "70px", "140px", "200px"]}
+      >
         <GridItem mt={10}>
           <Flex
             alignItems="center"

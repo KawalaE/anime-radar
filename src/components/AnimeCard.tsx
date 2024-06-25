@@ -25,12 +25,7 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
     ? anime.synopsis.substring(0, 190) + "..."
     : "Description unavailable :(";
   return (
-    <Card
-      w={[325, 260, 240, 250, 220]}
-      h={[590, 510, 460, 480, 435]}
-      overflow="hidden"
-      role="group"
-    >
+    <Card w={200} h={400} overflow="hidden" role="group">
       {/**Main card body */}
       <CardBody
         padding={0}

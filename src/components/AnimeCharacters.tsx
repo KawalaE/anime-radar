@@ -35,6 +35,7 @@ const AnimeCharacters = ({ id }: Props) => {
                 borderRadius={5}
                 p={2}
                 borderColor="teal.400"
+                maxWidth={200}
                 src={character.character.images.webp.image_url}
               ></Image>
               <Text mt={3} textAlign="center">
