@@ -15,13 +15,16 @@ const AnimeHeading = () => {
   const currentStatus = refactor(
     useAnimeQueryStore((s) => s.animeQuery.status) || ""
   );
+  const currentPhrase = refactor(
+    useAnimeQueryStore((s) => s.animeQuery.phrase) || ""
+  );
   return (
     <HStack ms={0.5}>
       <Heading
         size="xl"
         ms={10}
         color="teal.400"
-      >{`${currentGenreName}`}</Heading>
+      >{`${currentPhrase}${currentGenreName}`}</Heading>
       <Heading
         noOfLines={1}
         size="lg"

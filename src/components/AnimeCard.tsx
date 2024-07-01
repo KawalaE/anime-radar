@@ -22,10 +22,10 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
   const shortendTitle =
     mainTitle.length > 30 ? mainTitle.substring(0, 35) + "..." : mainTitle;
   const animeDescription = anime.synopsis
-    ? anime.synopsis.substring(0, 190) + "..."
+    ? anime.synopsis.substring(0, 150) + "..."
     : "Description unavailable :(";
   return (
-    <Card w={200} h={400} overflow="hidden" role="group">
+    <Card w={200} h={410} overflow="hidden" role="group">
       {/**Main card body */}
       <CardBody
         padding={0}
@@ -80,7 +80,7 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
 
         <VStack position="relative" alignItems="flex-start" gap={1}>
           <AnimeRating score={anime.score} scoredBy={anime.scored_by} />
-          <Text fontSize="sm" position="relative" color="gray.400" m="0" p="0">
+          <Text fontSize="xs" position="relative" color="gray.400" m="0" p="0">
             Episodes: {anime.episodes}
           </Text>
           <Text fontSize="sm" position="relative" color="gray.400" mb="1" p="0">

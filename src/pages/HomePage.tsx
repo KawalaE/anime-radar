@@ -1,5 +1,5 @@
 import { Grid, GridItem, Flex, Spinner } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import AnimeGrid from "../components/AnimeGrid";
 import AnimeHeading from "../components/AnimeHeading";
@@ -24,8 +24,8 @@ const HomePage = () => {
   return (
     <>
       <Grid
-        pr={["5px", "50px", "70px", "140px", "200px"]}
-        pl={["5px", "50px", "70px", "140px", "200px"]}
+        pr={["5px", "50px", "70px", "100px", "200px"]}
+        pl={["5px", "50px", "70px", "100px", "200px"]}
       >
         <GridItem mt={10}>
           <Flex

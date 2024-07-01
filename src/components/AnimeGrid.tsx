@@ -8,7 +8,7 @@ interface Props {
 const AnimeGrid = ({ animes }: Props) => {
   return (
     <SimpleGrid
-      columns={{ sm: 2, md: 3, lg: 4, xl: 5, "2xl": 6 }}
+      columns={{ sm: 2, md: 3, lg: 4, "2xl": 6 }}
       spacing={10}
       margin={10}
       justifyContent="center"

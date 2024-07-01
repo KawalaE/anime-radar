@@ -32,7 +32,7 @@ const useAnimeQueryStore = create<AnimeQueryStore>((set) => ({
     })),
   setGenreId: (genreId) =>
     set((store) => ({
-      animeQuery: { ...store.animeQuery, genreId: genreId },
+      animeQuery: { ...store.animeQuery, genreId: genreId, phrase: "" },
     })),
   setOrderBy: (orderBy) =>
     set((store) => ({

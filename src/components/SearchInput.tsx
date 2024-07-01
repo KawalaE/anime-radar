@@ -16,7 +16,6 @@ const SearchInput = () => {
         event.preventDefault();
         if (ref.current?.value) {
           setSearchedPhrase(ref.current.value);
-          setGenreId(0);
           navigate("/");
         }
       }}
