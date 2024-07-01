@@ -15,6 +15,7 @@ interface AnimeQueryStore {
   setOrderBy: (orderBy: string) => void;
   setTypeTo: (type: string) => void;
   setStatusTo: (status: string) => void;
+  resetAll: () => void;
 }
 
 const useAnimeQueryStore = create<AnimeQueryStore>((set) => ({
@@ -45,6 +46,10 @@ const useAnimeQueryStore = create<AnimeQueryStore>((set) => ({
   setStatusTo: (status) =>
     set((store) => ({
       animeQuery: { ...store.animeQuery, status: status, phrase: "" },
+    })),
+  resetAll: () =>
+    set(() => ({
+      animeQuery: { status: "", phrase: "", genreId: 0, orderBy: "" },
     })),
 }));
 

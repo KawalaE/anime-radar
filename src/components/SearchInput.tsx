@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
   const setSearchedPhrase = useAnimeQueryStore((s) => s.setSearchText);
-  const setGenreId = useAnimeQueryStore((s) => s.setGenreId);
   const navigate = useNavigate();
+
   return (
     <form
       style={{ width: "100%" }}
