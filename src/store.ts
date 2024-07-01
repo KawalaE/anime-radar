@@ -19,7 +19,9 @@ interface AnimeQueryStore {
 }
 
 const useAnimeQueryStore = create<AnimeQueryStore>((set) => ({
-  animeQuery: {},
+  animeQuery: {
+    orderBy: "popularity",
+  },
   setSearchText: (phrase) =>
     set((store) => ({
       animeQuery: {
@@ -49,7 +51,7 @@ const useAnimeQueryStore = create<AnimeQueryStore>((set) => ({
     })),
   resetAll: () =>
     set(() => ({
-      animeQuery: { status: "", phrase: "", genreId: 0, orderBy: "" },
+      animeQuery: { status: "", phrase: "", genreId: 0, orderBy: "popularity" },
     })),
 }));
 

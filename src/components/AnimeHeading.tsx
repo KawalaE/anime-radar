@@ -1,5 +1,5 @@
 import useAnimeQueryStore from "../store";
-import { HStack, Heading } from "@chakra-ui/react";
+import { HStack, Heading, Text, VStack } from "@chakra-ui/react";
 import { refactor } from "./UtilityFunctions";
 import useGenre from "../hooks/useGenre";
 
@@ -19,17 +19,18 @@ const AnimeHeading = () => {
     useAnimeQueryStore((s) => s.animeQuery.phrase) || ""
   );
   return (
-    <HStack ms={0.5}>
-      <Heading
-        size="xl"
-        ms={10}
-        color="teal.400"
-      >{`${currentPhrase}${currentGenreName}`}</Heading>
-      <Heading
-        noOfLines={1}
-        size="lg"
-      >{`${currentOrder} ${currentType} ${currentStatus}`}</Heading>
-    </HStack>
+    <VStack ms={10} justifyContent="flex-start">
+      <HStack>
+        <Heading
+          size="xl"
+          color="teal.400"
+        >{`${currentPhrase}${currentGenreName}`}</Heading>
+        <Heading
+          noOfLines={1}
+          size="lg"
+        >{`${currentOrder} ${currentType} ${currentStatus}`}</Heading>
+      </HStack>
+    </VStack>
   );
 };
 
