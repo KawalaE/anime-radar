@@ -20,11 +20,10 @@ const AnimeHeading = () => {
   );
   return (
     <VStack ms={10} justifyContent="flex-start">
-      <HStack>
-        <Heading
-          size="xl"
-          color="teal.400"
-        >{`${currentPhrase}${currentGenreName}`}</Heading>
+      <HStack flexWrap="wrap">
+        <Heading size="xl" color="teal.400">{`${currentPhrase}${
+          currentGenreName ? currentGenreName + " by" : "All by"
+        }`}</Heading>
         <Heading
           noOfLines={1}
           size="lg"
