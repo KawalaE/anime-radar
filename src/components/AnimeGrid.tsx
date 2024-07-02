@@ -19,7 +19,11 @@ const AnimeGrid = ({ animes }: Props) => {
     <>
       {!animes?.length && (
         <Flex marginTop={20} flexDir="column" alignItems="center">
-          <Heading size="lg" textAlign="center">
+          <Image
+            boxSize={["250px", "350px"]}
+            src="src/assets/anime-found.gif"
+          ></Image>
+          <Heading size="lg" textAlign="center" mt={10}>
             Oops... No anime was found.
           </Heading>
           <Heading size="md" textAlign="center">
