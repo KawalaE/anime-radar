@@ -31,9 +31,6 @@ const styles = {
     body: {
       bg: mode("gray.100", "gray.800")(props),
     },
-    SearchInput: {
-      bg: mode("red.100", "red.800")(props),
-    },
   }),
 };
 const theme = extendTheme({ config, fonts, styles, breakpoints });
