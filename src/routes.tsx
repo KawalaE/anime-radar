@@ -1,9 +1,9 @@
-import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "./pages/Layout";
-import HomePage from "./pages/HomePage";
 import AnimeDetailPage from "./components/AnimeDetailPage";
 import ErrorPage from "./pages/ErrorPage";
+import HomePage from "./pages/HomePage";
+import Layout from "./pages/Layout";
+
 const router = createBrowserRouter([
   {
     path: "/",

@@ -3,8 +3,12 @@ export const convertVotes = (votesAmount: number): string => {
   return Math.trunc(votesAmount / 1000) + "K";
 };
 
-export const refactorName = (word: string) => {
-  const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
-  const removedUnderscore = capitalized.replace("_", " ");
-  return removedUnderscore;
+export const refactorName = (title: string) => {
+  title = title.replace("_", " ");
+  let wordArr = title.split(" ");
+  for (let i = 0; i < wordArr.length; i++) {
+    wordArr[i] = wordArr[i].charAt(0).toUpperCase() + wordArr[i].slice(1);
+  }
+
+  return wordArr.join(" ");
 };

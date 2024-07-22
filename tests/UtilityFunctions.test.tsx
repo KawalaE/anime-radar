@@ -21,6 +21,6 @@ describe("refactorName", () => {
     { name: "anime name", scenario: "upper case when lower case" },
     { name: "anime_name", scenario: "no underscore if underscore present" },
   ])("should return $scenario", ({ name }) => {
-    expect(refactorName(name)).toMatch("Anime name");
+    expect(refactorName(name)).toMatch("Anime Name");
   });
 });
