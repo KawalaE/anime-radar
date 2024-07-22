@@ -1,14 +1,13 @@
+import { Box, Flex, Heading, Spinner } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import useAnime from "../hooks/useAnime";
-import { Flex, Heading, Spinner } from "@chakra-ui/react";
-import ExpanadableText from "./ExpanadableText";
-import AnimeTrailer from "./AnimeTrailer";
-import AnimeRating from "./AnimeRating";
 import AnimeCharacters from "./AnimeCharacters";
 import AnimeDetailInfo from "./AnimeDetailInfo";
-import AnimeRecommendations from "./AnimeRecommendations";
-import { Box } from "@chakra-ui/react";
 import AnimeGenresButtons from "./AnimeGenresButtons";
+import AnimeRating from "./AnimeRating";
+import AnimeRecommendations from "./AnimeRecommendations";
+import AnimeTrailer from "./AnimeTrailer";
+import ExpandableText from "./ExpandableText";
 
 const AnimeDetailPage = () => {
   const { id } = useParams();
@@ -45,7 +44,7 @@ const AnimeDetailPage = () => {
             />
           </Flex>
 
-          <ExpanadableText>{anime?.data.synopsis}</ExpanadableText>
+          <ExpandableText>{anime?.data.synopsis}</ExpandableText>
           <AnimeGenresButtons genres={anime.data.genres}></AnimeGenresButtons>
         </Box>
 
