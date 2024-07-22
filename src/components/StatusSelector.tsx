@@ -1,7 +1,7 @@
 import { CheckIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import useAnimeQueryStore from "../store";
-import { refactor } from "./UtilityFunctions";
+import { refactorName } from "./UtilityFunctions";
 
 const StatusSelector = () => {
   const setStatusTo = useAnimeQueryStore((s) => s.setStatusTo);
@@ -24,7 +24,7 @@ const StatusSelector = () => {
             value={status}
             onClick={() => setStatusTo(status)}
           >
-            {refactor(status)}
+            {refactorName(status)}
           </MenuItem>
         ))}
       </MenuList>

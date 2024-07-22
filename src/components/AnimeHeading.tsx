@@ -1,21 +1,21 @@
-import useAnimeQueryStore from "../store";
-import { HStack, Heading, Text, VStack } from "@chakra-ui/react";
-import { refactor } from "./UtilityFunctions";
+import { HStack, Heading, VStack } from "@chakra-ui/react";
 import useGenre from "../hooks/useGenre";
+import useAnimeQueryStore from "../store";
+import { refactorName } from "./UtilityFunctions";
 
 const AnimeHeading = () => {
   const currentGenreId = useAnimeQueryStore((s) => s.animeQuery.genreId);
   const currentGenreName = useGenre(currentGenreId) || "";
-  const currentOrder = refactor(
+  const currentOrder = refactorName(
     useAnimeQueryStore((s) => s.animeQuery.orderBy) || ""
   );
-  const currentType = refactor(
+  const currentType = refactorName(
     useAnimeQueryStore((s) => s.animeQuery.type) || ""
   );
-  const currentStatus = refactor(
+  const currentStatus = refactorName(
     useAnimeQueryStore((s) => s.animeQuery.status) || ""
   );
-  const currentPhrase = refactor(
+  const currentPhrase = refactorName(
     useAnimeQueryStore((s) => s.animeQuery.phrase) || ""
   );
   return (
