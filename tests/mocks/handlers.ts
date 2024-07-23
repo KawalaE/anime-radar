@@ -19,4 +19,7 @@ export const handlers = [
       ],
     });
   }),
+  http.get("https://api.jikan.moe/v4/anime", () => {
+    return HttpResponse.json({});
+  }),
 ];
