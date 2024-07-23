@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { convertVotes, refactorName } from "../src/components/UtilityFunctions";
+import {
+  convertVotes,
+  refactorName,
+} from "../../src/components/UtilityFunctions";
 
 describe("convertVotes", () => {
   it("should return 1000K for  1000000 input", () => {

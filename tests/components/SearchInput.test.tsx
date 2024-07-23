@@ -2,8 +2,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter as Router } from "react-router-dom";
-import AnimeHeading from "../src/components/AnimeHeading";
-import SearchInput from "../src/components/SearchInput";
+import AnimeHeading from "../../src/components/AnimeHeading";
+import SearchInput from "../../src/components/SearchInput";
+
 const anime = "Anime Title";
 const renderComponent = () => {
   const queryClient = new QueryClient();
@@ -49,6 +50,7 @@ describe("SearchInput and AnimeHeading", () => {
     const searchInput = screen.getByRole("search-bar");
     await user.type(searchInput, anime + "{enter}");
 
+    screen.debug();
     expect(screen.getByText(anime)).toBeInTheDocument();
   });
 });
