@@ -8,7 +8,6 @@ const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
   const setSearchedPhrase = useAnimeQueryStore((s) => s.setSearchText);
   const navigate = useNavigate();
-
   return (
     <form
       style={{ width: "100%" }}

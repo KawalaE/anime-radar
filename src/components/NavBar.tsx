@@ -1,14 +1,13 @@
 import { HStack, Switch, useColorMode } from "@chakra-ui/react";
 import { GiRadarSweep } from "react-icons/gi";
-import SearchInput from "./SearchInput";
 import { Link, useParams } from "react-router-dom";
 import useAnimeQueryStore from "../store";
+import SearchInput from "./SearchInput";
 
 const NavBar = () => {
   const { toggleColorMode, colorMode } = useColorMode();
   const resetAllSearches = useAnimeQueryStore((s) => s.resetAll);
   const params = useParams();
-  console.log(params.id);
   return (
     <HStack justifyContent="space-between" p="10px" ms={2} mr={2}>
       <Link to={"/"}>

@@ -18,7 +18,7 @@ interface AnimeQueryStore {
   resetAll: () => void;
 }
 
-const useAnimeQueryStore = create<AnimeQueryStore>((set) => ({
+export const useAnimeQueryStore = create<AnimeQueryStore>((set) => ({
   animeQuery: {
     orderBy: "popularity",
   },
