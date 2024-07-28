@@ -21,7 +21,12 @@ const AnimeHeading = () => {
   return (
     <VStack ms={10} justifyContent="flex-start">
       <HStack flexWrap="wrap">
-        <Heading size="xl" color="teal.400">{`${currentPhrase}${
+        {" "}
+        <Heading
+          role="anime-heading"
+          size="xl"
+          color="teal.400"
+        >{`${currentPhrase}${
           currentGenreName
             ? currentGenreName + " by"
             : currentPhrase

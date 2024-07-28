@@ -1,4 +1,5 @@
 //define request handlers
+import { animeData } from "./data";
 
 import { http, HttpResponse } from "msw";
 //get anime genres
@@ -8,7 +9,7 @@ export const handlers = [
       data: [
         {
           mal_id: 1,
-          name: "genre1",
+          name: "Action",
           count: 30,
         },
         {
@@ -21,35 +22,25 @@ export const handlers = [
   }),
   http.get("https://api.jikan.moe/v4/anime", ({ request }) => {
     const url = new URL(request.url);
-    const inputPhrase = url.searchParams.get("q");
-    console.log(inputPhrase);
-    return HttpResponse.json({
-      data: [
-        {
-          mal_id: 0,
-          url: "string",
-          images: {},
-          trailer: {},
+    const animePhrase = url.searchParams.get("q");
 
-          title: `${inputPhrase}`,
-          title_english: `${inputPhrase}`,
+    const lowerCaseSwitch = (word: string) => {
+      let newWord = "";
+      for (let i = 0; i < word.length; i++) {
+        newWord += word[i].toUpperCase();
+      }
+      return newWord;
+    };
 
-          type: "TV",
-
-          episodes: 0,
-          status: "Finished Airing",
-
-          rating: "G - All Ages",
-          score: 0,
-          scored_by: 0,
-
-          synopsis: "string",
-          year: 0,
-          broadcast: {},
-
-          genres: [],
-        },
-      ],
-    });
+    if (animePhrase) {
+      const animePhraseLowerCase = lowerCaseSwitch(animePhrase);
+      let containsPhrase = animeData.data.filter(
+        (element) =>
+          lowerCaseSwitch(element.title_english).match(animePhraseLowerCase) ||
+          lowerCaseSwitch(element.title).match(animePhraseLowerCase)
+      );
+      return HttpResponse.json({ ...animeData, data: containsPhrase });
+    }
+    return HttpResponse.json(animeData);
   }),
 ];

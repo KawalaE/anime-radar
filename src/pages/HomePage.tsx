@@ -1,5 +1,5 @@
-import { Grid, GridItem, Flex, Spinner } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { Flex, Grid, GridItem, Spinner } from "@chakra-ui/react";
+import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import AnimeGrid from "../components/AnimeGrid";
 import AnimeHeading from "../components/AnimeHeading";
@@ -17,7 +17,6 @@ const HomePage = () => {
     fetchNextPage,
     hasNextPage,
   } = useAnimes(animeQuery);
-
   const fetchedAnimesCount =
     animes?.pages.reduce((total, page) => total + page.data.length, 0) || 0;
 
@@ -28,14 +27,16 @@ const HomePage = () => {
         pl={["5px", "50px", "70px", "100px", "200px"]}
       >
         <GridItem mt={10}>
-          <Flex
-            alignItems="center"
-            justifyContent="space-between"
-            flexWrap="wrap"
-          >
-            <AnimeHeading />
-            <FilterMenu />
-          </Flex>
+          {
+            <Flex
+              alignItems="center"
+              justifyContent="space-between"
+              flexWrap="wrap"
+            >
+              <AnimeHeading />
+              <FilterMenu />
+            </Flex>
+          }
 
           <InfiniteScroll
             next={fetchNextPage}
@@ -44,7 +45,11 @@ const HomePage = () => {
             dataLength={fetchedAnimesCount}
           >
             {" "}
-            {animeIsLoading && <CardsSkeleton />}
+            {animeIsLoading && (
+              <div role="progressbar" aria-label="loading">
+                <CardsSkeleton />
+              </div>
+            )}
             {animes?.pages.map((page, index) => (
               <React.Fragment key={index}>
                 <AnimeGrid animes={page.data} />
