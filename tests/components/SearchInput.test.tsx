@@ -9,6 +9,7 @@ import HomePage from "../../src/pages/HomePage";
 
 describe("SearchInput", () => {
   const anime = "Bug";
+
   const renderComponent = () => {
     const queryClient = new QueryClient({
       defaultOptions: {
@@ -53,17 +54,18 @@ describe("SearchInput", () => {
 
     expect(searchInput).toHaveValue(anime);
   });
-  it("should change the name of the gird heading - AnimeHeading component", async () => {
+
+  it("should only display animes with the searched input in their name", async () => {
     const { user, searchInput } = renderComponent();
 
     await user.type(searchInput, anime + "{enter}");
 
     screen.debug();
 
-    // const heading = screen.getByRole("anime-heading");
+    const cardNames = screen.getAllByText(new RegExp(anime, "i"));
 
-    // // const titles = screen.getAllByText(/bug/i);
-
-    // expect(heading).toBeInTheDocument();
+    //if we display only one card that matches, it counts as two because of the
+    //reverse side + additional two for input field and gird heading
+    expect(cardNames.length).toBe(4);
   });
 });
