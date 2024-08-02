@@ -54,18 +54,20 @@ describe("SearchInput", () => {
 
     expect(searchInput).toHaveValue(anime);
   });
+  it.each([{ animeName: "Bug" }, { animeName: "Cat" }, { animeName: "crazy" }])(
+    "should only display animes with the searched input - $animeName in their name",
+    async ({ animeName }) => {
+      const { user, searchInput } = renderComponent();
 
-  it("should only display animes with the searched input in their name", async () => {
-    const { user, searchInput } = renderComponent();
+      await user.type(searchInput, animeName + "{enter}");
 
-    await user.type(searchInput, anime + "{enter}");
+      screen.debug();
 
-    screen.debug();
+      const cardNames = screen.getAllByText(new RegExp(animeName, "i"));
 
-    const cardNames = screen.getAllByText(new RegExp(anime, "i"));
-
-    //if we display only one card that matches, it counts as two because of the
-    //reverse side + additional two for input field and gird heading
-    expect(cardNames.length).toBe(4);
-  });
+      //if we display only one card that matches, it counts as two because of the
+      //reverse side + additional two for input field and gird heading
+      expect(cardNames.length).toBe(4);
+    }
+  );
 });
