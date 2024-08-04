@@ -61,8 +61,6 @@ describe("SearchInput", () => {
 
       await user.type(searchInput, animeName + "{enter}");
 
-      screen.debug();
-
       const cardNames = screen.getAllByText(new RegExp(animeName, "i"));
 
       //if we display only one card that matches, it counts as two because of the

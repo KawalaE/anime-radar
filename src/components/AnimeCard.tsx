@@ -9,8 +9,8 @@ import {
   Tooltip,
   VStack,
 } from "@chakra-ui/react";
-import { Anime } from "../entities/Anime";
 import { Link } from "react-router-dom";
+import { Anime } from "../entities/Anime";
 import AnimeRating from "./AnimeRating";
 
 interface Props {

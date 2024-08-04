@@ -26,7 +26,10 @@ export const animeData = {
       synopsis: "Synopsis of an anime",
       episodes: 5,
       status: "Finished Airing",
-      trailer: null,
+      trailer: {
+        images: { large_image_url: "crazy_cat.jpg" },
+        embed_url: "www.youtube/crazy-cat",
+      },
       rating: "R - 17+ (violence & profanity)",
       year: 2001,
       genres: [
@@ -39,6 +42,7 @@ export const animeData = {
           name: "Adventure",
         },
       ],
+      type: "TV",
     },
     {
       mal_id: 3332,
@@ -56,7 +60,10 @@ export const animeData = {
       synopsis: "Synopsis of an anime",
       episodes: 5,
       status: "Finished Airing",
-      trailer: null,
+      trailer: {
+        images: { large_image_url: "lady_bug.jpg" },
+        embed_url: "www.youtube/lady-bug",
+      },
       rating: "R - 17+ (violence & profanity)",
       year: 2001,
       genres: [
@@ -65,6 +72,7 @@ export const animeData = {
           name: "Adventure",
         },
       ],
+      type: "OVA",
     },
   ],
 };
