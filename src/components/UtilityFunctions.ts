@@ -1,9 +1,9 @@
-export const convertVotes = (votesAmount: number): string => {
+export function convertVotes(votesAmount: number): string {
   if (votesAmount < 1000) return (votesAmount / 1000).toFixed(1) + "K";
   return Math.trunc(votesAmount / 1000) + "K";
-};
+}
 
-export const refactorName = (title: string) => {
+export function refactorName(title: string) {
   title = title.replace("_", " ");
   let wordArr = title.split(" ");
   for (let i = 0; i < wordArr.length; i++) {
@@ -11,4 +11,7 @@ export const refactorName = (title: string) => {
   }
 
   return wordArr.join(" ");
+}
+export default {
+  convertVotes,
 };

@@ -21,11 +21,8 @@ describe("AnimeRating", () => {
     expect(screen.getByLabelText(/gray/i)).toBeInTheDocument();
   });
   it("should render scored by info in correct format", () => {
+    //change the test if the scoredByMock changes
     renderComponent();
-    expect(
-      screen.getByText(
-        "(" + Math.trunc(scoredByMock / 1000).toString() + "K" + ")"
-      )
-    ).toBeInTheDocument();
+    expect(screen.getByText("(2831K)")).toBeInTheDocument();
   });
 });
