@@ -13,7 +13,7 @@ describe("AnimeRating", () => {
   });
   it("should render a yellow star when score > 8", () => {
     renderComponent();
-    expect(screen.getByLabelText(/yellow/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/yellow-star/i)).toBeInTheDocument();
   });
   it("should render a gray star when score < 8", () => {
     scoreMock = 8;

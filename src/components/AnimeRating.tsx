@@ -11,7 +11,7 @@ const AnimeRating = ({ score, scoredBy }: Props) => {
     <HStack>
       <Text>{score}</Text>
       <StarIcon
-        aria-labelledby={score > 8 ? "yellow-star" : "gray-star"}
+        aria-label={score > 8 ? "yellow-star" : "gray-star"}
         color={score > 8 ? "yellow.400" : undefined}
         mb="1rem"
       />
