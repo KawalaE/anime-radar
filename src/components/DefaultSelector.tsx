@@ -25,6 +25,7 @@ const DefaultSelector = ({
             key={item}
             value={item}
             flexDir="row-reverse"
+            aria-label={item}
             icon={
               currentSelectedValue === item ? (
                 <CheckIcon color="teal.400" />

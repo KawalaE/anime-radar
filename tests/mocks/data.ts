@@ -71,6 +71,10 @@ export const animeData = {
           mal_id: 2,
           name: "Adventure",
         },
+        {
+          mal_id: 4,
+          name: "Comedy",
+        },
       ],
       type: "OVA",
     },

@@ -1,8 +1,7 @@
+import { CheckIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import Genre from "../entities/Genre";
 import useAnimeQueryStore from "../store";
-import { ChevronDownIcon } from "@chakra-ui/icons";
-import { CheckIcon } from "@chakra-ui/icons";
 
 interface Props {
   genres?: Genre[];
@@ -36,6 +35,7 @@ const AnimeGenres = ({ genres }: Props) => {
                 setGenreId(genre.mal_id);
               }}
               key={genre.mal_id}
+              aria-label={genre.name}
               icon={
                 currentGenre === genre.mal_id ? (
                   <CheckIcon color="teal.400" />
