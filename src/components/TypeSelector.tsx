@@ -1,7 +1,5 @@
-import { CheckIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import useAnimeQueryStore from "../store";
-import { refactorName } from "./UtilityFunctions";
+import DefaultSelector from "./DefaultSelector";
 
 const TypeSelector = () => {
   const setTypeTo = useAnimeQueryStore((s) => s.setTypeTo);
@@ -17,28 +15,13 @@ const TypeSelector = () => {
     "pv",
     "tv_special",
   ];
-
   return (
-    <Menu>
-      <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-        {"Type"}
-      </MenuButton>
-      <MenuList>
-        {categoriesOfOrder.map((type) => (
-          <MenuItem
-            flexDir="row-reverse"
-            icon={
-              selectedType === type ? <CheckIcon color="teal.400" /> : <></>
-            }
-            key={type}
-            value={type}
-            onClick={() => setTypeTo(type)}
-          >
-            {refactorName(type)}
-          </MenuItem>
-        ))}
-      </MenuList>
-    </Menu>
+    <DefaultSelector
+      selectionItems={categoriesOfOrder}
+      tagName={"Type"}
+      setSelectedValue={setTypeTo}
+      currentSelectedValue={selectedType}
+    />
   );
 };
 
