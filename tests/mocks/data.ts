@@ -11,7 +11,7 @@ export const animeData = {
   },
   data: [
     {
-      mal_id: 3522,
+      mal_id: 28623,
       title_english: "Crazy Cat",
       title: "Crazy Cat",
       images: {

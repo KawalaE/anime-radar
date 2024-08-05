@@ -1,6 +1,6 @@
 import { ChakraProvider, theme } from "@chakra-ui/react";
 import { render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import AnimeCard from "../../src/components/AnimeCard";
 import { convertVotes } from "../../src/components/UtilityFunctions";
 import { animeData } from "../mocks/data";
@@ -10,11 +10,11 @@ describe("AnimeCard", () => {
 
   const renderComponent = () => {
     render(
-      <BrowserRouter>
+      <MemoryRouter>
         <ChakraProvider theme={theme}>
           <AnimeCard animeInfo={dataMock} />
         </ChakraProvider>
-      </BrowserRouter>
+      </MemoryRouter>
     );
   };
 
@@ -86,7 +86,7 @@ describe("AnimeCard", () => {
   });
   it("should render a 'more info' button", () => {
     renderComponent();
-    const button = screen.getByRole("button", { name: /info/i });
+    const button = screen.getByRole("link", { name: /info/i });
     expect(button).toBeInTheDocument();
   });
 });
