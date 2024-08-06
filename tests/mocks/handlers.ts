@@ -32,6 +32,7 @@ export const handlers = [
     const genreId = url.searchParams.get("genres");
     const type = url.searchParams.get("type");
     const status = url.searchParams.get("status");
+    const sort = url.searchParams.get("order_by");
 
     const containsGenreHelper = (arr: [], id: string) => {
       for (let element of arr) {
@@ -82,6 +83,20 @@ export const handlers = [
       );
       console.log(containsStatus);
       return HttpResponse.json({ ...animeData, data: containsStatus });
+    }
+    if (sort) {
+      let sortedData = [];
+      let currentMax = 0;
+      for (let element of animeData.data) {
+        if (element.score > currentMax) {
+          sortedData.unshift(element);
+          currentMax = element.score;
+        } else sortedData.push(element);
+      }
+      console.log(sortedData);
+      console.log(sort);
+
+      return HttpResponse.json({ ...animeData, data: sortedData });
     }
     return HttpResponse.json(animeData);
   }),
