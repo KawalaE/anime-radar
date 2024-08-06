@@ -6,7 +6,7 @@ interface Props {
 const AnimeTrailer = ({ url }: Props) => {
   return url ? (
     <AspectRatio maxW="500px" ratio={5 / 3} ms="auto" mr="auto" mt={3}>
-      <iframe src={url} allowFullScreen />
+      <iframe aria-label="video-frame" src={url} allowFullScreen />
     </AspectRatio>
   ) : null;
 };

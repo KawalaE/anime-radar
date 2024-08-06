@@ -26,6 +26,38 @@ export const handlers = [
       ],
     });
   }),
+  http.get("https://api.jikan.moe/v4/anime/:id/characters", ({ params }) => {
+    console.log("in characters");
+    const { id } = params;
+    const animeCharacters = {
+      data: [
+        {
+          mal_id: 28623,
+          character: {
+            mal_id: 286231,
+            name: "Catty",
+            images: { webp: { large_image_url: "large_catty_img" } },
+          },
+          role: "Main",
+        },
+
+        {
+          mal_id: 3332,
+          character: {
+            mal_id: 33321,
+            name: "Buggy",
+            images: { webp: { large_image_url: "large_buggy_img" } },
+          },
+          role: "Main",
+        },
+      ],
+    };
+    for (let element of animeCharacters.data) {
+      if (element.mal_id.toString() === id) {
+        return HttpResponse.json({ data: element });
+      }
+    }
+  }),
   http.get("https://api.jikan.moe/v4/anime", ({ request }) => {
     const url = new URL(request.url);
     console.log(url.toString());

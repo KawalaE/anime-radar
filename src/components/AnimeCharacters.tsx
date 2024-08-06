@@ -1,7 +1,5 @@
+import { GridItem, Heading, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import useCharacters from "../hooks/useCharacters";
-import { GridItem, Heading, SimpleGrid } from "@chakra-ui/react";
-import { Image } from "@chakra-ui/react";
-import { Text } from "@chakra-ui/react";
 
 interface Props {
   id: number;
@@ -9,13 +7,15 @@ interface Props {
 
 const AnimeCharacters = ({ id }: Props) => {
   const { data, isLoading, error } = useCharacters(id, "/characters");
-
+  console.log("data");
+  console.log(data);
   if (isLoading) return null;
   if (error) throw error;
 
   const mainCharacters = data?.data.filter(
     (character) => character.role === "Main"
   );
+
   return mainCharacters ? (
     <>
       <Heading size="lg" mb={5} mt={10}>
