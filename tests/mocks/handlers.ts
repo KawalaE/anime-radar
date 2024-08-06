@@ -66,10 +66,9 @@ export const handlers = [
     const type = url.searchParams.get("type");
     const status = url.searchParams.get("status");
     const sort = url.searchParams.get("order_by");
+
     const containsGenreHelper = (arr: [], id: string) => {
-      if (id < 1) {
-        return true;
-      }
+      if (Number(id) === 0) return true;
       for (let element of arr) {
         console.log(element);
         if (element.mal_id.toString() === id) return true;
