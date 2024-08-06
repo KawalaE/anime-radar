@@ -59,7 +59,7 @@ export const animeData = {
       scored_by: 24000,
       synopsis: "Synopsis of an anime",
       episodes: 5,
-      status: "Finished Airing",
+      status: "Currently Airing",
       trailer: {
         images: { large_image_url: "lady_bug.jpg" },
         embed_url: "www.youtube/lady-bug",

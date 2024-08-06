@@ -31,7 +31,7 @@ export const handlers = [
     const animePhrase = url.searchParams.get("q");
     const genreId = url.searchParams.get("genres");
     const type = url.searchParams.get("type");
-    console.log(type);
+    const status = url.searchParams.get("status");
 
     const containsGenreHelper = (arr: [], id: string) => {
       for (let element of arr) {
@@ -71,6 +71,17 @@ export const handlers = [
       );
       console.log(containsType);
       return HttpResponse.json({ ...animeData, data: containsType });
+    }
+    if (status) {
+      let statusMap = {
+        "Finished Airing": "complete",
+        "Currently Airing": "airing",
+      };
+      let containsStatus = animeData.data.filter(
+        (element) => statusMap[element.status] === status
+      );
+      console.log(containsStatus);
+      return HttpResponse.json({ ...animeData, data: containsStatus });
     }
     return HttpResponse.json(animeData);
   }),
