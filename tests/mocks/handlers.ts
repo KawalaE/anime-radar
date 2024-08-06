@@ -67,6 +67,9 @@ export const handlers = [
     const status = url.searchParams.get("status");
     const sort = url.searchParams.get("order_by");
     const containsGenreHelper = (arr: [], id: string) => {
+      if (id < 1) {
+        return true;
+      }
       for (let element of arr) {
         console.log(element);
         if (element.mal_id.toString() === id) return true;
@@ -89,20 +92,23 @@ export const handlers = [
           lowerCaseSwitch(element.title_english).match(animePhraseLowerCase) ||
           lowerCaseSwitch(element.title).match(animePhraseLowerCase)
       );
-
+      console.log("end1");
       return HttpResponse.json({ ...animeData, data: containsPhrase });
     }
     if (genreId) {
       let containsGenre = animeData.data.filter((element) =>
         containsGenreHelper(element.genres, genreId)
       );
+
+      console.log("end2");
+      console.log({ ...animeData, data: containsGenre });
       return HttpResponse.json({ ...animeData, data: containsGenre });
     }
     if (type) {
       let containsType = animeData.data.filter(
         (element) => element.type === type
       );
-      console.log(containsType);
+      console.log("end3");
       return HttpResponse.json({ ...animeData, data: containsType });
     }
     if (status) {
@@ -113,7 +119,7 @@ export const handlers = [
       let containsStatus = animeData.data.filter(
         (element) => statusMap[element.status] === status
       );
-      console.log(containsStatus);
+      console.log("end4");
       return HttpResponse.json({ ...animeData, data: containsStatus });
     }
     if (sort && sort != "popularity") {
@@ -125,8 +131,10 @@ export const handlers = [
           currentMax = element.score;
         } else sortedData.push(element);
       }
+      console.log("end5");
       return HttpResponse.json({ ...animeData, data: sortedData });
     }
+    console.log("end6");
     return HttpResponse.json(animeData);
   }),
 ];

@@ -40,25 +40,22 @@ describe("AnimeGrid", () => {
     const { user, searchInput } = renderComponent();
 
     await user.type(searchInput, invalidTitle + "{enter}");
-
     const notFoudHeading = screen.getByText(/no anime was found/i);
     const resetButton = screen.getByRole("button", { name: /reset/i });
 
     expect(notFoudHeading).toBeInTheDocument();
     expect(resetButton).toBeInTheDocument();
   });
-  it.todo(
-    "should reset filters if anime not found and reset was clicked",
-    async () => {
-      const { user, searchInput } = renderComponent();
+  it("should reset filters if anime not found and reset was clicked", async () => {
+    const { user, searchInput } = renderComponent();
 
-      await user.type(searchInput, invalidTitle + "{enter}");
+    await user.type(searchInput, invalidTitle + "{enter}");
 
-      const resetButton = screen.getByRole("button", { name: /reset/i });
-      expect(resetButton).toBeInTheDocument();
-      await user.click(resetButton);
-      screen.debug(null, 20000);
-      //expect(screen.getAllByText(/all by/i).length).toBeGreaterThan(0);
-    }
-  );
+    const resetButton = screen.getByRole("button", { name: /reset/i });
+    expect(resetButton).toBeInTheDocument();
+    await user.click(resetButton);
+
+    expect(screen.getAllByText(/all by/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/cat || bug/i).length).toBeGreaterThan(0);
+  });
 });

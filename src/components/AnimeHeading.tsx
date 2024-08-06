@@ -24,7 +24,7 @@ const AnimeHeading = () => {
         {" "}
         <Heading
           size="xl"
-          aria-label="anime-heading"
+          aria-label="main-heading"
           color="teal.400"
         >{`${currentPhrase}${
           currentGenreName
