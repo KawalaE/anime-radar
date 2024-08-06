@@ -1,6 +1,6 @@
-import Genre from "../entities/Genre";
 import { Button, Flex } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import Genre from "../entities/Genre";
 import useAnimeQueryStore from "../store";
 interface Props {
   genres: Genre[];
@@ -11,7 +11,7 @@ const AnimeGenresButtons = ({ genres }: Props) => {
   const setType = useAnimeQueryStore((s) => s.setTypeTo);
   const setOrder = useAnimeQueryStore((s) => s.setOrderBy);
   const setStatus = useAnimeQueryStore((s) => s.setStatusTo);
-  console.log(genres);
+
   const navigate = useNavigate();
   return (
     <Flex gap={5} flexWrap="wrap">

@@ -46,7 +46,7 @@ const HomePage = () => {
           >
             {" "}
             {animeIsLoading && (
-              <div role="progressbar" aria-label="loading">
+              <div role="progressbar">
                 <CardsSkeleton />
               </div>
             )}

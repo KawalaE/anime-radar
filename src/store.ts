@@ -51,7 +51,13 @@ export const useAnimeQueryStore = create<AnimeQueryStore>((set) => ({
     })),
   resetAll: () =>
     set(() => ({
-      animeQuery: { status: "", phrase: "", genreId: 0, orderBy: "popularity" },
+      animeQuery: {
+        status: "",
+        phrase: "",
+        genreId: 0,
+        type: "",
+        orderBy: "popularity",
+      },
     })),
 }));
 
