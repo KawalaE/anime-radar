@@ -42,7 +42,7 @@ export const animeData = {
           name: "Adventure",
         },
       ],
-      type: "TV",
+      type: "tv",
     },
     {
       mal_id: 3332,
@@ -76,7 +76,7 @@ export const animeData = {
           name: "Comedy",
         },
       ],
-      type: "OVA",
+      type: "ova",
     },
   ],
 };

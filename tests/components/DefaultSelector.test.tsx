@@ -4,7 +4,7 @@ import DefaultSelector from "../../src/components/DefaultSelector";
 describe("DefaultSelector", () => {
   const tagNameMock = "Tag";
   const itemsMock = ["Item1", "Item2"];
-  let selectedValueMock = "";
+  let selectedValueMock = "Item1";
   const setSelectedValueMock = (value: string) => (selectedValueMock += value);
 
   const renderComponent = () => {
@@ -34,6 +34,5 @@ describe("DefaultSelector", () => {
     itemsMock.forEach((item) => {
       expect(screen.getByText(new RegExp(item, "i"))).toBeInTheDocument();
     });
-    screen.debug();
   });
 });

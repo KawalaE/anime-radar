@@ -30,8 +30,8 @@ export const handlers = [
     const url = new URL(request.url);
     const animePhrase = url.searchParams.get("q");
     const genreId = url.searchParams.get("genres");
-    console.log(genreId);
-    console.log(url.toString());
+    const type = url.searchParams.get("type");
+    console.log(type);
 
     const containsGenreHelper = (arr: [], id: string) => {
       for (let element of arr) {
@@ -63,6 +63,14 @@ export const handlers = [
         containsGenreHelper(element.genres, genreId)
       );
       return HttpResponse.json({ ...animeData, data: containsGenre });
+    }
+    if (type) {
+      console.log(type);
+      let containsType = animeData.data.filter(
+        (element) => element.type === type
+      );
+      console.log(containsType);
+      return HttpResponse.json({ ...animeData, data: containsType });
     }
     return HttpResponse.json(animeData);
   }),
