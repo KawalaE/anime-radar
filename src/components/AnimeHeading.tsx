@@ -34,6 +34,7 @@ const AnimeHeading = () => {
             : "All by"
         }`}</Heading>
         <Heading
+          aria-label="secondary-heading"
           noOfLines={1}
           size="lg"
         >{`${currentOrder} ${currentType} ${currentStatus}`}</Heading>

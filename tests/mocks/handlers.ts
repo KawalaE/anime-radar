@@ -29,6 +29,8 @@ export const handlers = [
   http.get("https://api.jikan.moe/v4/anime/:id/characters", ({ params }) => {
     console.log("in characters");
     const { id } = params;
+    console.log(id);
+
     const animeCharacters = {
       data: [
         {

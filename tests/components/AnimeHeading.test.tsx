@@ -7,8 +7,6 @@ import SearchInput from "../../src/components/SearchInput";
 import HomePage from "../../src/pages/HomePage";
 
 describe("AnimeHeading", () => {
-  const anime = "Bug";
-
   const renderComponent = () => {
     const queryClient = new QueryClient({
       defaultOptions: {
@@ -41,14 +39,30 @@ describe("AnimeHeading", () => {
     expect(genres).toBeInTheDocument();
     expect(order.length).toBeGreaterThanOrEqual(2);
   });
-  it('should change the genre in the main title if different chosen"', async () => {
-    const { user } = renderComponent();
-    const genresButton = screen.getByRole("button", { name: /genres/i });
-    await user.click(genresButton);
+  it.each([
+    { button: "genres", option: "action", headingLabel: "main-heading" },
+    {
+      button: "order",
+      option: "popularity",
+      headingLabel: "secondary-heading",
+    },
+    { button: "type", option: "movie", headingLabel: "secondary-heading" },
+    { button: "status", option: "airing", headingLabel: "secondary-heading" },
+  ])(
+    "should change status to $option if $button was changed",
+    async ({ button, option, headingLabel }) => {
+      const { user } = renderComponent();
+      const filterBtn = screen.getByRole("button", {
+        name: new RegExp(button, "i"),
+      });
+      await user.click(filterBtn);
 
-    const actionGenre = screen.getByLabelText(/action/i);
-    await user.click(actionGenre);
-    expect(screen.getByLabelText("main-heading")).toHaveTextContent(/action/i);
-    screen.debug(null, 200000);
-  });
+      const optionBtn = screen.getByLabelText(new RegExp(option, "i"));
+      await user.click(optionBtn);
+
+      expect(screen.getByLabelText(headingLabel)).toHaveTextContent(
+        new RegExp(option, "i")
+      );
+    }
+  );
 });
