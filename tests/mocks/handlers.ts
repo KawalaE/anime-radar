@@ -56,19 +56,49 @@ export const handlers = [
     };
     for (let element of animeCharacters.data) {
       if (element.mal_id.toString() === id) {
-        return HttpResponse.json({ data: element });
+        return HttpResponse.json({ data: [element] });
       }
     }
   }),
-  // http.get("https://api.jikan.moe/v4/anime/:id", ({ params }) => {
+  http.get("https://api.jikan.moe/v4/anime/:id", ({ params }) => {
+    const { id } = params;
+    console.log("hee");
+    console.log(id);
+    const anime = animeData.data.filter(
+      (element) => element.mal_id.toString() === id
+    );
+    console.log("animeid");
+    console.log({ ...animeData, data: anime[0] });
+    return HttpResponse.json({ ...animeData, data: anime[0] });
+  }),
+  // http.get("https://api.jikan.moe/v4/anime/:id/recommendations", ({ params }) => {
   //   const { id } = params;
-  //   console.log(id);
-  //   const anime = animeData.data.filter(
-  //     (element) => element.mal_id.toString() === id
-  //   );
-  //   return HttpResponse.json({ ...animeData, data: animeData.data[0] });
+  //   const animeCharacters = {
+  //     data: [
+  //       {
+  //         mal_id: 28623,
+  //         character: {
+  //           mal_id: 286231,
+  //           name: "Catty",
+  //           images: { webp: { large_image_url: "large_catty_img" } },
+  //         },
+  //         role: "Main",
+  //       },
+
+  //       {
+  //         mal_id: 3332,
+  //         character: {
+  //           mal_id: 33321,
+  //           name: "Buggy",
+  //           images: { webp: { large_image_url: "large_buggy_img" } },
+  //         },
+  //         role: "Main",
+  //       },
+  //     ],
+  //   };
   // }),
   http.get("https://api.jikan.moe/v4/anime", ({ request }) => {
+    console.log("heading here1");
     const url = new URL(request.url);
     console.log(url.toString());
     const animePhrase = url.searchParams.get("q");
@@ -93,8 +123,9 @@ export const handlers = [
       }
       return newWord;
     };
-
+    console.log("heading here2");
     if (animePhrase) {
+      console.log("in phrase");
       const animePhraseLowerCase = lowerCaseSwitch(animePhrase);
       let containsPhrase = animeData.data.filter(
         (element) =>
@@ -105,22 +136,20 @@ export const handlers = [
       return HttpResponse.json({ ...animeData, data: containsPhrase });
     }
     if (genreId) {
+      console.log("in genreid");
       let containsGenre = animeData.data.filter((element) =>
         containsGenreHelper(element.genres, genreId)
       );
-
-      console.log("end2");
-      console.log({ ...animeData, data: containsGenre });
       return HttpResponse.json({ ...animeData, data: containsGenre });
     }
     if (type) {
       let containsType = animeData.data.filter(
         (element) => element.type === type
       );
-      console.log("end3");
       return HttpResponse.json({ ...animeData, data: containsType });
     }
     if (status) {
+      console.log("in status");
       let statusMap = {
         "Finished Airing": "complete",
         "Currently Airing": "airing",
@@ -140,10 +169,10 @@ export const handlers = [
           currentMax = element.score;
         } else sortedData.push(element);
       }
-      console.log("end5");
+      console.log("heading here3");
       return HttpResponse.json({ ...animeData, data: sortedData });
     }
-    console.log("end6");
+    console.log("heading here4");
     return HttpResponse.json(animeData);
   }),
 ];

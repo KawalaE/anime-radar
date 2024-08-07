@@ -11,6 +11,8 @@ import ExpandableText from "./ExpandableText";
 
 const AnimeDetailPage = () => {
   const { id } = useParams();
+  console.log("in anime detail");
+  console.log(id);
   const { data: anime, isLoading, error } = useAnime(id!);
   console.log(anime);
   let title = anime?.data.title_english

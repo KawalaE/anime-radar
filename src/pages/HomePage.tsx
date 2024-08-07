@@ -19,7 +19,8 @@ const HomePage = () => {
   } = useAnimes(animeQuery);
   const fetchedAnimesCount =
     animes?.pages.reduce((total, page) => total + page.data.length, 0) || 0;
-
+  console.log("in home");
+  console.log(animes);
   return (
     <>
       <Grid

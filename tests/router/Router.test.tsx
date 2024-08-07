@@ -24,9 +24,19 @@ describe("Router", () => {
       </QueryClientProvider>
     );
   };
-  it("should render the Home page for /", () => {
+  it("should render the Home page for /", async () => {
     renderComponent("/");
     expect(screen.getByText(/all by/i)).toBeInTheDocument();
+    expect(
+      (await screen.findAllByText(/cat || bug/i)).length
+    ).toBeGreaterThanOrEqual(4);
+    screen.debug(null, 200000);
+  });
+  it("should render the AnimeDetailPage page for /anime/3332", async () => {
+    renderComponent("/anime/3332");
+    expect(await screen.findByText(/main/i)).toBeInTheDocument();
+    screen.debug();
+    //expect(screen.getByText(/all by/i)).toBeInTheDocument();
   });
   //to test detail page rendering first we have to mock the server response
 });
