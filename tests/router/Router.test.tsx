@@ -30,13 +30,13 @@ describe("Router", () => {
     expect(
       (await screen.findAllByText(/cat || bug/i)).length
     ).toBeGreaterThanOrEqual(4);
-    screen.debug(null, 200000);
   });
-  it("should render the AnimeDetailPage page for /anime/3332", async () => {
-    renderComponent("/anime/3332");
-    expect(await screen.findByText(/main/i)).toBeInTheDocument();
-    screen.debug();
-    //expect(screen.getByText(/all by/i)).toBeInTheDocument();
+  it("should render the AnimeDetailPage page for /anime/28623", async () => {
+    renderComponent("/anime/28623");
+    expect(await screen.findByText(/catty/i)).toBeInTheDocument();
   });
-  //to test detail page rendering first we have to mock the server response
+  it("should render not found page for invalid routes", async () => {
+    renderComponent("/invalid-route");
+    expect(await screen.findByText(/not exist/i)).toBeInTheDocument();
+  });
 });

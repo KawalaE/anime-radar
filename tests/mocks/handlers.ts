@@ -71,32 +71,54 @@ export const handlers = [
     console.log({ ...animeData, data: anime[0] });
     return HttpResponse.json({ ...animeData, data: anime[0] });
   }),
-  // http.get("https://api.jikan.moe/v4/anime/:id/recommendations", ({ params }) => {
-  //   const { id } = params;
-  //   const animeCharacters = {
-  //     data: [
-  //       {
-  //         mal_id: 28623,
-  //         character: {
-  //           mal_id: 286231,
-  //           name: "Catty",
-  //           images: { webp: { large_image_url: "large_catty_img" } },
-  //         },
-  //         role: "Main",
-  //       },
+  http.get(
+    "https://api.jikan.moe/v4/anime/:id/recommendations",
+    ({ params }) => {
+      const { id } = params;
+      const animeCharacters = {
+        data: [
+          {
+            mal_id: 28623,
+            entry: {
+              mal_id: 286232,
+              name: "Cat in the boots",
+              images: { webp: { large_image_url: "large_cat_boots_img" } },
+            },
+            role: "Main",
+          },
 
-  //       {
-  //         mal_id: 3332,
-  //         character: {
-  //           mal_id: 33321,
-  //           name: "Buggy",
-  //           images: { webp: { large_image_url: "large_buggy_img" } },
-  //         },
-  //         role: "Main",
-  //       },
-  //     ],
-  //   };
-  // }),
+          {
+            mal_id: 28623,
+            entry: {
+              mal_id: 286233,
+              name: "Cute cats",
+              images: { webp: { large_image_url: "large_cute_cats_img" } },
+            },
+            role: "Main",
+          },
+
+          {
+            mal_id: 3332,
+            entry: {
+              mal_id: 33322,
+              name: "Bug Josh",
+              images: { webp: { large_image_url: "large_bug_josh_img" } },
+            },
+            role: "Main",
+          },
+        ],
+      };
+      let dataResponse = [];
+      for (let element of animeCharacters.data) {
+        if (element.mal_id.toString() === id) {
+          dataResponse.push(element);
+        }
+      }
+      console.log("response");
+      console.log(dataResponse);
+      return HttpResponse.json({ data: { data: dataResponse } });
+    }
+  ),
   http.get("https://api.jikan.moe/v4/anime", ({ request }) => {
     console.log("heading here1");
     const url = new URL(request.url);

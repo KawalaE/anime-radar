@@ -1,8 +1,8 @@
-import useRecommendations from "../hooks/useRecommendations";
 import { Box, Heading } from "@chakra-ui/react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import AnimeCardCarousel from "./AnimeCardCarousel";
 import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import useRecommendations from "../hooks/useRecommendations";
+import AnimeCardCarousel from "./AnimeCardCarousel";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -16,11 +16,12 @@ const AnimeRecommendations = ({ id }: Props) => {
 
   if (isLoading) return null;
   if (error) throw error;
-
+  console.log("in recomendation");
+  console.log(data);
   const bestRecommendations =
-    data?.data.length > 10 ? data?.data.slice(0, 10) : data?.data;
-  console.log(bestRecommendations ? bestRecommendations[0] : null);
-
+    data!.data.length > 10 ? data?.data.slice(0, 10) : data?.data;
+  console.log("best");
+  console.log(bestRecommendations);
   return data?.data.length ? (
     <>
       <Heading mb={5} mt={10} size="lg">
