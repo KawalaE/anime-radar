@@ -1,10 +1,9 @@
-import { createBrowserRouter } from "react-router-dom";
 import AnimeDetailPage from "./components/AnimeDetailPage";
 import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
 import Layout from "./pages/Layout";
 
-const router = createBrowserRouter([
+const routes = [
   {
     path: "/",
     element: <Layout />,
@@ -14,6 +13,6 @@ const router = createBrowserRouter([
       { path: "anime/:id", element: <AnimeDetailPage /> },
     ],
   },
-]);
+];
 
-export default router;
+export default routes;

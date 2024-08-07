@@ -60,6 +60,14 @@ export const handlers = [
       }
     }
   }),
+  // http.get("https://api.jikan.moe/v4/anime/:id", ({ params }) => {
+  //   const { id } = params;
+  //   console.log(id);
+  //   const anime = animeData.data.filter(
+  //     (element) => element.mal_id.toString() === id
+  //   );
+  //   return HttpResponse.json({ ...animeData, data: animeData.data[0] });
+  // }),
   http.get("https://api.jikan.moe/v4/anime", ({ request }) => {
     const url = new URL(request.url);
     console.log(url.toString());
