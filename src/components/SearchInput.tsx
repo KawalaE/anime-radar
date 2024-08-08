@@ -20,7 +20,7 @@ const SearchInput = () => {
       }}
     >
       <InputGroup ml={3} mr={3}>
-        <InputLeftElement children={<Search2Icon />}></InputLeftElement>
+        <InputLeftElement>{<Search2Icon />}</InputLeftElement>
         <Input
           ref={ref}
           role="search-bar"

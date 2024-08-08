@@ -11,7 +11,7 @@ export const handlers = [
     console.log("in characters");
     const { id } = params;
     console.log(id);
-    for (let element of characters.data) {
+    for (const element of characters.data) {
       if (element.mal_id.toString() === id) {
         return HttpResponse.json({ data: [element] });
       }
@@ -33,8 +33,8 @@ export const handlers = [
     ({ params }) => {
       const { id } = params;
 
-      let dataResponse = [];
-      for (let element of recommendations.data) {
+      const dataResponse = [];
+      for (const element of recommendations.data) {
         if (element.mal_id.toString() === id) {
           dataResponse.push(element);
         }
@@ -56,7 +56,7 @@ export const handlers = [
 
     const containsGenreHelper = (arr: [], id: string) => {
       if (Number(id) === 0) return true;
-      for (let element of arr) {
+      for (const element of arr) {
         console.log(element);
         if (element.mal_id.toString() === id) return true;
       }
@@ -74,7 +74,7 @@ export const handlers = [
     if (animePhrase) {
       console.log("in phrase");
       const animePhraseLowerCase = lowerCaseSwitch(animePhrase);
-      let containsPhrase = animeData.data.filter(
+      const containsPhrase = animeData.data.filter(
         (element) =>
           lowerCaseSwitch(element.title_english).match(animePhraseLowerCase) ||
           lowerCaseSwitch(element.title).match(animePhraseLowerCase)
@@ -84,33 +84,33 @@ export const handlers = [
     }
     if (genreId) {
       console.log("in genreid");
-      let containsGenre = animeData.data.filter((element) =>
+      const containsGenre = animeData.data.filter((element) =>
         containsGenreHelper(element.genres, genreId)
       );
       return HttpResponse.json({ ...animeData, data: containsGenre });
     }
     if (type) {
-      let containsType = animeData.data.filter(
+      const containsType = animeData.data.filter(
         (element) => element.type === type
       );
       return HttpResponse.json({ ...animeData, data: containsType });
     }
     if (status) {
       console.log("in status");
-      let statusMap = {
+      const statusMap = {
         "Finished Airing": "complete",
         "Currently Airing": "airing",
       };
-      let containsStatus = animeData.data.filter(
+      const containsStatus = animeData.data.filter(
         (element) => statusMap[element.status] === status
       );
       console.log("end4");
       return HttpResponse.json({ ...animeData, data: containsStatus });
     }
     if (sort && sort != "popularity") {
-      let sortedData = [];
+      const sortedData = [];
       let currentMax = 0;
-      for (let element of animeData.data) {
+      for (const element of animeData.data) {
         if (element.score > currentMax) {
           sortedData.unshift(element);
           currentMax = element.score;

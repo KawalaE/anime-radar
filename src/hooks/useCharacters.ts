@@ -1,7 +1,6 @@
-import APIClient, { FetchResponse } from "../services/api-client";
 import { useQuery } from "@tanstack/react-query";
-import Character from "../entities/Character";
 import CharacterData from "../entities/Character";
+import APIClient from "../services/api-client";
 
 interface Response {
   data: CharacterData[];

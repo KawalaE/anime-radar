@@ -10,8 +10,6 @@ interface Props {
 const AnimeGenres = ({ genres }: Props) => {
   const setGenreId = useAnimeQueryStore((s) => s.setGenreId);
   const currentGenre = useAnimeQueryStore((s) => s.animeQuery.genreId);
-
-  console.log(genres);
   const filteredGneres = genres?.filter(
     (genre) =>
       //filter out to long categories or unwanted categories

@@ -1,13 +1,6 @@
-import {
-  Button,
-  Flex,
-  Heading,
-  SimpleGrid,
-  Image,
-  Img,
-} from "@chakra-ui/react";
-import AnimeCard from "./AnimeCard";
+import { SimpleGrid } from "@chakra-ui/react";
 import { Anime } from "../entities/Anime";
+import AnimeCard from "./AnimeCard";
 import AnimeNotFound from "./AnimeNotFound";
 
 interface Props {

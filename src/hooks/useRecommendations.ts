@@ -1,6 +1,6 @@
-import { useQueries, useQuery } from "@tanstack/react-query";
-import APIClient from "../services/api-client";
+import { useQuery } from "@tanstack/react-query";
 import { Images } from "../entities/Anime";
+import APIClient from "../services/api-client";
 
 export interface Entry {
   mal_id: number;

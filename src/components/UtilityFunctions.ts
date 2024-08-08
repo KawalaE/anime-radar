@@ -5,7 +5,7 @@ export function convertVotes(votesAmount: number): string {
 
 export function refactorName(title: string) {
   title = title.replace("_", " ");
-  let wordArr = title.split(" ");
+  const wordArr = title.split(" ");
   for (let i = 0; i < wordArr.length; i++) {
     wordArr[i] = wordArr[i].charAt(0).toUpperCase() + wordArr[i].slice(1);
   }

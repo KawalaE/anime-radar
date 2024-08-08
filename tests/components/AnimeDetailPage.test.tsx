@@ -88,7 +88,7 @@ describe("AnimeDetailPage", () => {
     const recommendedAnime = getRecommendationsForId(animeData.data[0].mal_id);
     expect(await screen.findByText("Cute cats")).toBeInTheDocument();
 
-    for (let element of recommendedAnime) {
+    for (const element of recommendedAnime) {
       console.log(element.entry.title);
       expect(await screen.findByText(element.entry.title)).toBeInTheDocument();
     }

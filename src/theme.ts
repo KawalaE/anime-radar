@@ -1,14 +1,6 @@
-import {
-  Button,
-  Card,
-  color,
-  extendTheme,
-  StyleFunctionProps,
-  ThemeConfig,
-  useColorMode,
-} from "@chakra-ui/react";
-import "../node_modules/@fontsource/open-sans";
+import { extendTheme, StyleFunctionProps, ThemeConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
+import "../node_modules/@fontsource/open-sans";
 
 const config: ThemeConfig = {
   initialColorMode: "dark",

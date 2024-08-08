@@ -7,8 +7,6 @@ interface Props {
 
 const AnimeCharacters = ({ id }: Props) => {
   const { data, isLoading, error } = useCharacters(id, "/characters");
-  console.log("data");
-  console.log(data);
   if (isLoading) return null;
   if (error) throw error;
 

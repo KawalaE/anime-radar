@@ -1,16 +1,12 @@
 import { Flex } from "@chakra-ui/react";
-import OrderSelector from "./OrderSelector";
-import TypeSelector from "./TypeSelector";
-import StatusSelector from "./StatusSelector";
-import AnimeGenres from "./AnimeGenres";
 import useGenres from "../hooks/useGenres";
+import AnimeGenres from "./AnimeGenres";
+import OrderSelector from "./OrderSelector";
+import StatusSelector from "./StatusSelector";
+import TypeSelector from "./TypeSelector";
 
 const FilterMenu = () => {
-  const {
-    data: genres,
-    error: genreError,
-    isLoading: genreIsLoading,
-  } = useGenres();
+  const { data: genres } = useGenres();
 
   return (
     <Flex mr={10} gap={4} ms={5} mt={5} flexWrap="wrap">
