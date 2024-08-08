@@ -7,6 +7,7 @@ import {
   Image,
   Text,
   Tooltip,
+  useColorMode,
   VStack,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
@@ -18,6 +19,10 @@ interface Props {
 }
 
 const AnimeCard = ({ animeInfo: anime }: Props) => {
+  const { colorMode } = useColorMode();
+  const brightnessMode =
+    colorMode === "light" ? "blur(1px)" : "brightness(0.4)";
+  const secondaryText = colorMode === "light" ? "black.400" : "gray.400";
   const mainTitle = anime.title_english ? anime.title_english : anime.title;
   const shortendTitle =
     mainTitle.length > 30 ? mainTitle.substring(0, 35) + "..." : mainTitle;
@@ -64,7 +69,7 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
           bottom: " 0px",
           left: "0px",
           opacity: "0.3",
-          filter: "brightness(0.25) ",
+          filter: `${brightnessMode}`,
         }}
         _groupHover={{
           display: "flex",
@@ -80,10 +85,22 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
 
         <VStack position="relative" alignItems="flex-start" gap={1}>
           <AnimeRating score={anime.score} scoredBy={anime.scored_by} />
-          <Text fontSize="xs" position="relative" color="gray.400" m="0" p="0">
+          <Text
+            fontSize="xs"
+            position="relative"
+            color={secondaryText}
+            m="0"
+            p="0"
+          >
             Episodes: {anime.episodes}
           </Text>
-          <Text fontSize="sm" position="relative" color="gray.400" mb="1" p="0">
+          <Text
+            fontSize="sm"
+            position="relative"
+            color={secondaryText}
+            mb="1"
+            p="0"
+          >
             Status: {anime.status}
           </Text>
         </VStack>

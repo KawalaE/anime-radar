@@ -1,5 +1,10 @@
 import { Search2Icon } from "@chakra-ui/icons";
-import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import {
+  Input,
+  InputGroup,
+  InputLeftElement,
+  useColorMode,
+} from "@chakra-ui/react";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import useAnimeQueryStore from "../store";
@@ -8,6 +13,7 @@ const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
   const setSearchedPhrase = useAnimeQueryStore((s) => s.setSearchText);
   const navigate = useNavigate();
+  const { colorMode } = useColorMode();
   return (
     <form
       style={{ width: "100%" }}
@@ -26,6 +32,7 @@ const SearchInput = () => {
           role="search-bar"
           focusBorderColor="teal.300"
           size="md"
+          background={colorMode === "light" ? "gray.200" : "transparent"}
           borderRadius={20}
           variant="filled"
           placeholder="Anime name..."

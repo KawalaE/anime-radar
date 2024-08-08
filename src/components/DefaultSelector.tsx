@@ -1,5 +1,12 @@
 import { CheckIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import {
+  Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  useColorMode,
+} from "@chakra-ui/react";
 import { refactorName } from "./UtilityFunctions";
 
 interface Props {
@@ -14,9 +21,14 @@ const DefaultSelector = ({
   setSelectedValue,
   currentSelectedValue,
 }: Props) => {
+  const { colorMode } = useColorMode();
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+      <MenuButton
+        as={Button}
+        background={colorMode === "light" ? "teal.100" : "gray.700"}
+        rightIcon={<ChevronDownIcon />}
+      >
         {tagName}
       </MenuButton>
       <MenuList>

@@ -89,7 +89,6 @@ describe("AnimeDetailPage", () => {
     expect(await screen.findByText("Cute cats")).toBeInTheDocument();
 
     for (const element of recommendedAnime) {
-      console.log(element.entry.title);
       expect(await screen.findByText(element.entry.title)).toBeInTheDocument();
     }
   });

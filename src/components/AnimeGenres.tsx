@@ -1,5 +1,12 @@
 import { CheckIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import {
+  Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  useColorMode,
+} from "@chakra-ui/react";
 import Genre from "../entities/Genre";
 import useAnimeQueryStore from "../store";
 
@@ -18,10 +25,14 @@ const AnimeGenres = ({ genres }: Props) => {
       genre.mal_id !== 49 &&
       genre.mal_id !== 51
   );
-
+  const { colorMode } = useColorMode();
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+      <MenuButton
+        as={Button}
+        background={colorMode === "light" ? "teal.100" : "gray.700"}
+        rightIcon={<ChevronDownIcon />}
+      >
         Genres
       </MenuButton>
       <MenuList>
