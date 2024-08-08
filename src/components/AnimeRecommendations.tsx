@@ -16,14 +16,15 @@ const AnimeRecommendations = ({ id }: Props) => {
 
   if (isLoading) return null;
   if (error) throw error;
-  console.log("in recomendation");
-  console.log(data);
+
   const bestRecommendations =
     data!.data.length > 10 ? data?.data.slice(0, 10) : data?.data;
-  console.log("best");
+  console.log("in reccom");
   console.log(bestRecommendations);
-  return data?.data.length ? (
+  console.log(bestRecommendations?.length);
+  return bestRecommendations ? (
     <>
+      {console.log("maybe here???")}
       <Heading mb={5} mt={10} size="lg">
         More like this
       </Heading>
@@ -58,6 +59,7 @@ const AnimeRecommendations = ({ id }: Props) => {
           }}
         >
           {bestRecommendations?.map((rec) => {
+            console.log("in a loop");
             return (
               <SwiperSlide
                 key={rec.entry.mal_id}

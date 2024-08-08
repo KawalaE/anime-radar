@@ -1,15 +1,12 @@
-import { Entry } from "../hooks/useRecommendations";
-import { AspectRatio, Card, Heading, Tooltip } from "@chakra-ui/react";
-import { Image } from "@chakra-ui/react";
+import { AspectRatio, Card, Heading, Image, Tooltip } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { Entry } from "../hooks/useRecommendations";
 
 interface Props {
   data: Entry;
 }
 
 const AnimeCardCarousel = ({ data }: Props) => {
-  let title =
-    data.title.length > 25 ? data.title.substring(0, 20) + "..." : data.title;
   return (
     <>
       <Link to={`/anime/${data.mal_id}`} style={{ display: "inline-block" }}>
@@ -33,7 +30,11 @@ const AnimeCardCarousel = ({ data }: Props) => {
           </AspectRatio>
           <Tooltip label={data.title}>
             <Heading textAlign="center" size="sm" mt={5}>
-              {title}
+              {data.title
+                ? data.title.length > 25
+                  ? data.title.substring(0, 20) + "..."
+                  : data.title
+                : "null"}
             </Heading>
           </Tooltip>
         </Card>

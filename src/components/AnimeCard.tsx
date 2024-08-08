@@ -92,7 +92,9 @@ const AnimeCard = ({ animeInfo: anime }: Props) => {
           {animeDescription}
         </Text>
         <Link to={"/anime/" + anime.mal_id}>
-          <Button colorScheme="teal">More info</Button>
+          <Button colorScheme="teal" aria-label={`more-info-${anime.title}`}>
+            More info
+          </Button>
         </Link>
       </CardBody>
     </Card>

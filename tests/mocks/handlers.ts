@@ -1,60 +1,17 @@
 //define request handlers
-import { animeData } from "./data";
-
 import { http, HttpResponse } from "msw";
+import { animeData, characters, genres, recommendations } from "./data";
 //get anime genres
 
 export const handlers = [
   http.get("https://api.jikan.moe/v4/genres/anime", () => {
-    return HttpResponse.json({
-      data: [
-        {
-          mal_id: 1,
-          name: "Action",
-          count: 3500,
-        },
-        {
-          mal_id: 2,
-          name: "Adventure",
-          count: 3600,
-        },
-        {
-          mal_id: 4,
-          name: "Comedy",
-          count: 3500,
-        },
-      ],
-    });
+    return HttpResponse.json(genres);
   }),
   http.get("https://api.jikan.moe/v4/anime/:id/characters", ({ params }) => {
     console.log("in characters");
     const { id } = params;
     console.log(id);
-
-    const animeCharacters = {
-      data: [
-        {
-          mal_id: 28623,
-          character: {
-            mal_id: 286231,
-            name: "Catty",
-            images: { webp: { large_image_url: "large_catty_img" } },
-          },
-          role: "Main",
-        },
-
-        {
-          mal_id: 3332,
-          character: {
-            mal_id: 33321,
-            name: "Buggy",
-            images: { webp: { large_image_url: "large_buggy_img" } },
-          },
-          role: "Main",
-        },
-      ],
-    };
-    for (let element of animeCharacters.data) {
+    for (let element of characters.data) {
       if (element.mal_id.toString() === id) {
         return HttpResponse.json({ data: [element] });
       }
@@ -75,48 +32,16 @@ export const handlers = [
     "https://api.jikan.moe/v4/anime/:id/recommendations",
     ({ params }) => {
       const { id } = params;
-      const animeCharacters = {
-        data: [
-          {
-            mal_id: 28623,
-            entry: {
-              mal_id: 286232,
-              name: "Cat in the boots",
-              images: { webp: { large_image_url: "large_cat_boots_img" } },
-            },
-            role: "Main",
-          },
 
-          {
-            mal_id: 28623,
-            entry: {
-              mal_id: 286233,
-              name: "Cute cats",
-              images: { webp: { large_image_url: "large_cute_cats_img" } },
-            },
-            role: "Main",
-          },
-
-          {
-            mal_id: 3332,
-            entry: {
-              mal_id: 33322,
-              name: "Bug Josh",
-              images: { webp: { large_image_url: "large_bug_josh_img" } },
-            },
-            role: "Main",
-          },
-        ],
-      };
       let dataResponse = [];
-      for (let element of animeCharacters.data) {
+      for (let element of recommendations.data) {
         if (element.mal_id.toString() === id) {
           dataResponse.push(element);
         }
       }
       console.log("response");
-      console.log(dataResponse);
-      return HttpResponse.json({ data: { data: dataResponse } });
+      console.log({ data: { data: [dataResponse] } });
+      return HttpResponse.json({ data: dataResponse });
     }
   ),
   http.get("https://api.jikan.moe/v4/anime", ({ request }) => {
