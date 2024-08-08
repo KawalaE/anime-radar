@@ -3,8 +3,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import routes from "../src/routes";
-
+import { animeData, characters } from "./mocks/data";
 describe("Router", () => {
+  const id = animeData.data[0].mal_id;
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -28,12 +29,21 @@ describe("Router", () => {
     renderComponent("/");
     expect(screen.getByText(/all by/i)).toBeInTheDocument();
     expect(
-      (await screen.findAllByText(/cat || bug/i)).length
-    ).toBeGreaterThanOrEqual(4);
+      (
+        await screen.findAllByText(
+          new RegExp(animeData.data[0].title, "i") ||
+            new RegExp(animeData.data[2].title, "i")
+        )
+      ).length
+    ).toBeGreaterThanOrEqual(2);
   });
-  it("should render the AnimeDetailPage page for /anime/28623", async () => {
-    renderComponent("/anime/28623");
-    expect(await screen.findByText(/catty/i)).toBeInTheDocument();
+  it(`should render the AnimeDetailPage page for /anime/${id}`, async () => {
+    renderComponent(`/anime/${id}`);
+    expect(
+      await screen.findByText(
+        new RegExp(characters.data[0].character.name, "i")
+      )
+    ).toBeInTheDocument();
   });
   it("should render not found page for invalid routes", async () => {
     renderComponent("/invalid-route");
