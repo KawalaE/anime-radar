@@ -79,7 +79,10 @@ export const handlers = [
       return HttpResponse.json({ ...animeData, data: containsType });
     }
     if (status) {
-      const statusMap = {
+      type tstatusMap = {
+        [key: string]: string;
+      };
+      const statusMap: tstatusMap = {
         "Finished Airing": "complete",
         "Currently Airing": "airing",
       };

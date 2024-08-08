@@ -36,10 +36,12 @@ export const animeData = {
         {
           mal_id: 1,
           name: "Action",
+          count: 44,
         },
         {
           mal_id: 2,
           name: "Adventure",
+          count: 434,
         },
       ],
       type: "tv",
@@ -70,10 +72,12 @@ export const animeData = {
         {
           mal_id: 2,
           name: "Adventure",
+          count: 55,
         },
         {
           mal_id: 4,
           name: "Comedy",
+          count: 99,
         },
       ],
       type: "ova",
