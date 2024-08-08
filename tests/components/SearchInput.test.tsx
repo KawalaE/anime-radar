@@ -1,35 +1,21 @@
-import { ChakraProvider, ColorModeScript, theme } from "@chakra-ui/react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter as Router } from "react-router-dom";
 import AnimeHeading from "../../src/components/AnimeHeading";
 import SearchInput from "../../src/components/SearchInput";
 import HomePage from "../../src/pages/HomePage";
+import Providers from "../Providers";
 
 describe("SearchInput", () => {
   const anime = "Bug";
 
   const renderComponent = () => {
-    const queryClient = new QueryClient({
-      defaultOptions: {
-        queries: {
-          retry: false,
-        },
-      },
-    });
-
     render(
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <ChakraProvider theme={theme}>
-            <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-            <SearchInput />
-            <AnimeHeading />
-            <HomePage />
-          </ChakraProvider>
-        </Router>
-      </QueryClientProvider>
+      <>
+        <SearchInput />
+        <AnimeHeading />
+        <HomePage />
+      </>,
+      { wrapper: Providers }
     );
     return {
       user: userEvent.setup(),

@@ -2,7 +2,7 @@ import { ChakraProvider, theme } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
-import routes from "../../src/routes";
+import routes from "../src/routes";
 
 describe("Router", () => {
   const queryClient = new QueryClient({

@@ -1,32 +1,12 @@
-import { ChakraProvider, ColorModeScript, theme } from "@chakra-ui/react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter } from "react-router-dom";
 import HomePage from "../../src/pages/HomePage";
-
-//In this test suite, we utilize data from data.ts
-//Names like bug, cat are tighty connected to the data.ts file
+import Providers from "../Providers";
+import { animeData, genres } from "../mocks/data";
 
 describe("AnimeHeading", () => {
   const renderComponent = () => {
-    const queryClient = new QueryClient({
-      defaultOptions: {
-        queries: {
-          retry: false,
-        },
-      },
-    });
-    render(
-      <QueryClientProvider client={queryClient}>
-        <MemoryRouter>
-          <ChakraProvider theme={theme}>
-            <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-            <HomePage />
-          </ChakraProvider>
-        </MemoryRouter>
-      </QueryClientProvider>
-    );
+    render(<HomePage />, { wrapper: Providers });
     return {
       genresButton: screen.getByRole("button", { name: /genres/i }),
       specGenre: (genre: string) =>
@@ -35,34 +15,34 @@ describe("AnimeHeading", () => {
   };
   it.each([
     {
-      genre: "comedy",
-      catCard: { name: "cat", length: 0 },
-      bugCard: { name: "bug", length: 2 },
+      genre: genres.data[2].name,
+      firstCard: { name: animeData.data[0].title, length: 0 },
+      secondCard: { name: animeData.data[1].title, length: 2 },
     },
     {
-      genre: "action",
-      catCard: { name: "cat", length: 2 },
-      bugCard: { name: "bug", length: 0 },
+      genre: genres.data[0].name,
+      firstCard: { name: animeData.data[0].title, length: 2 },
+      secondCard: { name: animeData.data[1].title, length: 0 },
     },
     {
-      genre: "adventure",
-      catCard: { name: "cat", length: 2 },
-      bugCard: { name: "bug", length: 2 },
+      genre: genres.data[1].name,
+      firstCard: { name: animeData.data[0].title, length: 2 },
+      secondCard: { name: animeData.data[1].title, length: 2 },
     },
   ])(
     "should render only animes that have the category $genre",
-    async ({ genre, catCard, bugCard }) => {
+    async ({ genre, firstCard, secondCard }) => {
       const { genresButton, specGenre } = renderComponent();
       const user = userEvent.setup();
       await user.click(genresButton);
 
       await user.click(specGenre(genre));
-      expect(screen.queryAllByText(new RegExp(catCard.name, "i")).length).toBe(
-        catCard.length
-      );
-      expect(screen.queryAllByText(new RegExp(bugCard.name, "i")).length).toBe(
-        bugCard.length
-      );
+      expect(
+        screen.queryAllByText(new RegExp(firstCard.name, "i")).length
+      ).toBe(firstCard.length);
+      expect(
+        screen.queryAllByText(new RegExp(secondCard.name, "i")).length
+      ).toBe(secondCard.length);
     }
   );
 });

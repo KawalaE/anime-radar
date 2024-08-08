@@ -1,24 +1,15 @@
-import { ChakraProvider, theme } from "@chakra-ui/react";
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
 import AnimeCard from "../../src/components/AnimeCard";
 import { convertVotes } from "../../src/components/UtilityFunctions";
 import { animeData } from "../mocks/data";
+import Providers from "../Providers";
 
 describe("AnimeCard", () => {
   const dataMock = animeData.data[0];
 
   const renderComponent = () => {
-    render(
-      <MemoryRouter>
-        <ChakraProvider theme={theme}>
-          <AnimeCard animeInfo={dataMock} />
-        </ChakraProvider>
-      </MemoryRouter>
-    );
+    render(<AnimeCard animeInfo={dataMock} />, { wrapper: Providers });
   };
-
-  //we will use for tests the first anime from the data base
 
   it("should render an image element", () => {
     renderComponent();

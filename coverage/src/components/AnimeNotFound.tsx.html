@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.05% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/19</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.05% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/19</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -88,57 +88,54 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Flex, Heading, Button, Image } from "@chakra-ui/react";
-import React from "react";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Button, Flex, Heading, Image } from "@chakra-ui/react";
 import useAnimeQueryStore from "../store";
 &nbsp;
-const AnimeNotFound = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  const resetAllSearches = useAnimeQueryStore((s) =&gt; s.resetAll);</span>
-<span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;Flex marginTop={20} flexDir="column" alignItems="center"&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;Image</span>
-<span class="cstat-no" title="statement not covered" >        boxSize={["250px", "350px"]}</span>
-<span class="cstat-no" title="statement not covered" >        src={`src/assets/anime-found-${Math.floor(Math.random() * 3)}.gif`}</span>
-<span class="cstat-no" title="statement not covered" >      &gt;&lt;/Image&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;Heading size="lg" textAlign="center" mt={10}&gt;</span>
+const AnimeNotFound = () =&gt; {
+  const resetAllSearches = useAnimeQueryStore((s) =&gt; s.resetAll);
+  return (
+    &lt;Flex marginTop={20} flexDir="column" alignItems="center"&gt;
+      &lt;Image
+        boxSize={["250px", "350px"]}
+        src={`src/assets/anime-found-${Math.floor(Math.random() * 3)}.gif`}
+      &gt;&lt;/Image&gt;
+      &lt;Heading size="lg" textAlign="center" mt={10}&gt;
         Oops... No anime was found.
-<span class="cstat-no" title="statement not covered" >      &lt;/Heading&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;Heading size="md" textAlign="center"&gt;</span>
+      &lt;/Heading&gt;
+      &lt;Heading size="md" textAlign="center"&gt;
         Looks like it's hiding in another dimension!
-<span class="cstat-no" title="statement not covered" >      &lt;/Heading&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;Button onClick={resetAllSearches} colorScheme="teal" variant="ghost"&gt;</span>
+      &lt;/Heading&gt;
+      &lt;Button onClick={resetAllSearches} colorScheme="teal" variant="ghost"&gt;
         Reset my filters!
-<span class="cstat-no" title="statement not covered" >      &lt;/Button&gt;</span>
-<span class="cstat-no" title="statement not covered" >    &lt;/Flex&gt;</span>
+      &lt;/Button&gt;
+    &lt;/Flex&gt;
   );
-<span class="cstat-no" title="statement not covered" >};</span>
+};
 &nbsp;
 export default AnimeNotFound;
 &nbsp;</pre></td></tr></table></pre>
@@ -148,7 +145,7 @@ export default AnimeNotFound;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-02T17:59:20.068Z
+                at 2024-08-08T12:39:09.923Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

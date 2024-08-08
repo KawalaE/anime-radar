@@ -1,32 +1,14 @@
-import { ChakraProvider, ColorModeScript, theme } from "@chakra-ui/react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter } from "react-router-dom";
 import HomePage from "../../src/pages/HomePage";
-
+import Providers from "../Providers";
+import { animeData } from "../mocks/data";
 //In this test suite, we utilize data from data.ts
 //Names like bug, cat are tighty connected to the data.ts file
 
 describe("TypeSelector", () => {
   const renderComponent = () => {
-    const queryClient = new QueryClient({
-      defaultOptions: {
-        queries: {
-          retry: false,
-        },
-      },
-    });
-    render(
-      <QueryClientProvider client={queryClient}>
-        <MemoryRouter>
-          <ChakraProvider theme={theme}>
-            <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-            <HomePage />
-          </ChakraProvider>
-        </MemoryRouter>
-      </QueryClientProvider>
-    );
+    render(<HomePage />, { wrapper: Providers });
     return {
       typeButton: screen.getByRole("button", { name: /type/i }),
       specType: (type: string) => screen.getByLabelText(type),
@@ -35,18 +17,18 @@ describe("TypeSelector", () => {
   it.each([
     {
       type: "tv",
-      catCard: { name: "cat", length: 2 },
-      bugCard: { name: "bug", length: 0 },
+      catCard: { name: animeData.data[0].title, length: 2 },
+      bugCard: { name: animeData.data[1].title, length: 0 },
     },
     {
       type: "ova",
-      catCard: { name: "cat", length: 0 },
-      bugCard: { name: "bug", length: 2 },
+      catCard: { name: animeData.data[0].title, length: 0 },
+      bugCard: { name: animeData.data[1].title, length: 2 },
     },
     {
       type: "movie",
-      catCard: { name: "cat", length: 0 },
-      bugCard: { name: "bug", length: 0 },
+      catCard: { name: animeData.data[0].title, length: 0 },
+      bugCard: { name: animeData.data[1].title, length: 0 },
     },
   ])(
     "should render only animes that have of type $type",

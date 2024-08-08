@@ -1,19 +1,12 @@
-import { ChakraProvider, theme } from "@chakra-ui/react";
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
 import AnimeCardCarousel from "../../src/components/AnimeCardCarousel";
 import { animeData } from "../mocks/data";
+import Providers from "../Providers";
 
 describe("AnimeCardCarousel", () => {
   const inputData = animeData.data[0];
   const renderComponent = () => {
-    render(
-      <MemoryRouter>
-        <ChakraProvider theme={theme}>
-          <AnimeCardCarousel data={inputData} />
-        </ChakraProvider>
-      </MemoryRouter>
-    );
+    render(<AnimeCardCarousel data={inputData} />, { wrapper: Providers });
   };
   it("should render a carousel card with correct name", () => {
     renderComponent();
