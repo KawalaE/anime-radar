@@ -36,3 +36,16 @@ Mocking of the API requests for testing puroposes was accomplished with `Mock Se
 + Anime API - https://jikan.moe/
 ---
 
+https://github.com/user-attachments/assets/db332c3c-7aac-4827-9e1e-979019eaad00
+
+---
+![Przechwytywanie](https://github.com/user-attachments/assets/bd3fe219-ec44-464a-bd66-0b0d65915f51)
+![Przechwytywanie1](https://github.com/user-attachments/assets/217db2b9-eafb-4d44-b21a-0496e3fdbc41)
+![Przechwytywanie2](https://github.com/user-attachments/assets/2a80820e-641e-42d9-ab05-615112ac7fbd)
+
+---
+![mobile1](https://github.com/user-attachments/assets/3ccd1186-cb72-4a52-8194-bbf95748f3c4)
+![mobile3](https://github.com/user-attachments/assets/24da406a-44d0-4a53-8540-e809828feb55)
+
+
+
