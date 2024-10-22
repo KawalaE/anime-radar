@@ -20,10 +20,7 @@ const HomePage = () => {
     animes?.pages.reduce((total, page) => total + page.data.length, 0) || 0;
   return (
     <>
-      <Grid
-        pr={["5px", "50px", "70px", "100px", "200px"]}
-        pl={["5px", "50px", "70px", "100px", "200px"]}
-      >
+      <Grid>
         <GridItem mt={10}>
           {
             <Flex
