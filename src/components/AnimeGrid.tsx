@@ -15,6 +15,7 @@ const AnimeGrid = ({ animes }: Props) => {
         spacing={10}
         margin={10}
         justifyContent="center"
+        mx="auto"
       >
         {animes?.map((anime) => (
           <AnimeCard key={anime.mal_id} animeInfo={anime}></AnimeCard>

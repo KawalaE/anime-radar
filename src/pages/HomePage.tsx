@@ -1,4 +1,4 @@
-import { Flex, Grid, GridItem, Spinner } from "@chakra-ui/react";
+import { Flex, Grid, SimpleGrid, Spinner } from "@chakra-ui/react";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import AnimeGrid from "../components/AnimeGrid";
@@ -21,37 +21,43 @@ const HomePage = () => {
   return (
     <>
       <Grid>
-        <GridItem mt={10}>
-          {
-            <Flex
-              alignItems="center"
-              justifyContent="space-between"
-              flexWrap="wrap"
-            >
-              <AnimeHeading />
-              <FilterMenu />
-            </Flex>
-          }
-
+        <SimpleGrid columns={[1, null, 2]} p={5} gap="2rem">
+          <Flex dir="ltr">
+            <AnimeHeading />
+          </Flex>
+          <FilterMenu />
+        </SimpleGrid>
+        <Flex
+          justifyContent="center"
+          alignItems="center"
+          direction="column"
+          width="100%"
+          overflowY="hidden"
+        >
           <InfiniteScroll
             next={fetchNextPage}
             hasMore={!!hasNextPage}
-            loader={<Spinner />}
+            style={{ width: "100%", overflow: "hidden" }}
+            loader={
+              <Flex justifyContent="center" mt={4}>
+                <Spinner />
+              </Flex>
+            }
             dataLength={fetchedAnimesCount}
           >
             {" "}
-            {animeIsLoading && (
-              <div role="progressbar">
-                <CardsSkeleton />
-              </div>
-            )}
             {animes?.pages.map((page, index) => (
               <React.Fragment key={index}>
                 <AnimeGrid animes={page.data} />
               </React.Fragment>
             ))}
+            {animeIsLoading && (
+              <div role="progressbar">
+                <CardsSkeleton />
+              </div>
+            )}
           </InfiniteScroll>
-        </GridItem>
+        </Flex>
       </Grid>
     </>
   );

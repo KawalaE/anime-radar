@@ -20,7 +20,7 @@ const AnimeDetailPage = () => {
   if (error || !anime) throw error;
 
   return (
-    <Flex m={10} padding={10} flexDir="column">
+    <Flex mt={5} p={10} flexDir="column">
       <Flex direction={{ base: "column", xl: "row" }} gap={5}>
         <Box flex="1">
           <Heading>{title}</Heading>

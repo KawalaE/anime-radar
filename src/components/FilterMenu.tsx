@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import AnimeGenres from "./AnimeGenres";
 import OrderSelector from "./OrderSelector";
@@ -9,12 +9,12 @@ const FilterMenu = () => {
   const { data: genres } = useGenres();
 
   return (
-    <Flex mr={10} gap={4} ms={5} mt={5} flexWrap="wrap">
+    <SimpleGrid columns={[1, null, 4]} gap="2rem">
       <AnimeGenres genres={genres?.data} />
       <OrderSelector />
       <TypeSelector />
       <StatusSelector />
-    </Flex>
+    </SimpleGrid>
   );
 };
 

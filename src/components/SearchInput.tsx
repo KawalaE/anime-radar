@@ -32,7 +32,7 @@ const SearchInput = () => {
           role="search-bar"
           focusBorderColor="teal.300"
           size="md"
-          background={colorMode === "light" ? "gray.200" : "transparent"}
+          background={colorMode === "light" ? "gray.200" : "gray.700"}
           borderRadius={20}
           variant="filled"
           placeholder="Anime name..."

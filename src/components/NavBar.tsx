@@ -9,7 +9,7 @@ const NavBar = () => {
   const resetAllSearches = useAnimeQueryStore((s) => s.resetAll);
   const params = useParams();
   return (
-    <HStack justifyContent="space-between" p="10px" ms={2} mr={2}>
+    <HStack justifyContent="space-between" p={5} ms={2} mr={2} mt={3}>
       <Link to={"/"}>
         <GiRadarSweep
           onClick={() => (params.id ? null : resetAllSearches())}

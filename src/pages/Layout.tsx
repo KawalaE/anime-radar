@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 
 const Layout = () => {
   return (
-    <Container maxW="161ch">
+    <Container maxW="158ch">
       <NavBar />
       <Outlet />
     </Container>
