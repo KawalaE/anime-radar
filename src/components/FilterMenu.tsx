@@ -9,7 +9,7 @@ const FilterMenu = () => {
   const { data: genres } = useGenres();
 
   return (
-    <SimpleGrid columns={[1, null, 4]} gap="2rem">
+    <SimpleGrid columns={[1, null, 4]} gap="1.5rem">
       <AnimeGenres genres={genres?.data} />
       <OrderSelector />
       <TypeSelector />

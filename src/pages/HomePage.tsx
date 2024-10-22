@@ -21,7 +21,7 @@ const HomePage = () => {
   return (
     <>
       <Grid>
-        <SimpleGrid columns={[1, null, 2]} p={5} gap="2rem">
+        <SimpleGrid columns={[1, null, 2]} p={5} gap="2.1rem">
           <Flex dir="ltr">
             <AnimeHeading />
           </Flex>
