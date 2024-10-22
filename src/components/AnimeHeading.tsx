@@ -22,7 +22,7 @@ const AnimeHeading = () => {
     <VStack ms={10} justifyContent="flex-start">
       <HStack flexWrap="wrap">
         <Heading
-          fontSize={{ base: "1rem", md: "1.5rem", lg: "2rem" }}
+          fontSize={{ base: "1.5rem", md: "1.7rem", lg: "2rem" }}
           aria-label="main-heading"
           color="teal.400"
         >{`${currentPhrase}${
@@ -35,7 +35,7 @@ const AnimeHeading = () => {
         <Heading
           aria-label="secondary-heading"
           noOfLines={1}
-          fontSize={{ base: "1rem", md: "1.5rem", lg: "2rem" }}
+          fontSize={{ base: "1.5rem", md: "1.5rem", lg: "2rem" }}
         >{`${currentOrder} ${currentType} ${currentStatus}`}</Heading>
       </HStack>
     </VStack>
