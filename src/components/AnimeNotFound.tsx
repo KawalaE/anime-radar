@@ -7,7 +7,8 @@ const AnimeNotFound = () => {
     <Flex marginTop={20} flexDir="column" alignItems="center">
       <Image
         boxSize={["250px", "350px"]}
-        src={"../src/assets/anime-found-1.gif"}
+        src={"../public/anime-found-1.gif"}
+        alt="Not found"
       ></Image>
       <Heading size="lg" textAlign="center" mt={10}>
         Oops... No anime was found.
