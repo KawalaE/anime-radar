@@ -1,5 +1,5 @@
 # Anime Radar
-Anime Radar is a web app built with `React`, `TypeScript`, `Zustand`, and the `Jikan API`. It allows anime enthusiasts to explore and discover animes based on genres, order type, and status, while also providing a convenient search bar for quick lookups.
+Anime Radar is a web app built with `React`, `TypeScript`, `Zustand`,`React Query`, `React Router` and the `Jikan API`. It allows anime enthusiasts to explore and discover animes based on genres, order type, and status, while also providing a convenient search bar for quick lookups. 
 
 [Click here to see the project!](https://anime-radar.vercel.app/)
 
@@ -20,6 +20,7 @@ Anime Radar is a web app built with `React`, `TypeScript`, `Zustand`, and the `J
 - [x] Detailed Anime Information: View descriptions, characters, trailers, and suggested animes for deeper exploration.
 - [x] React Query: Efficiently fetch and cache data from the Jikan API for a smooth user experience.
 - [x] React Router: Seamless navigation between different sections of the app.
+- [X] Test Application with Mock Service Worker and Vitest. 
 
 ---
 
