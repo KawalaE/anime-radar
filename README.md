@@ -28,7 +28,7 @@ Anime Radar is a web app built with `React`, `TypeScript`, `Zustand`,`React Quer
 
 Click on below picture, to see the application demo!
 
-[![ThumbNail](https://github.com/user-attachments/assets/060c4d88-a851-4fc6-8e85-5158ca6473dc)](https://www.youtube.com/watch?v=lC7a1kw9MWY)
+[![Thumbnail](https://github.com/user-attachments/assets/a4577666-664a-4209-b58b-c7962cafa0be)](https://www.youtube.com/watch?v=lC7a1kw9MWY)
 
 ### Acknowledgments
 
